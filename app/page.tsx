@@ -252,7 +252,7 @@ export default function Home() {
                             alt="Logistics Truck"
                             width={800}
                             height={600}
-                            className="object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-700 scale-110 hover:scale-100"
+                            className="object-cover rounded-xl transition-all duration-700 scale-110 hover:scale-100"
                           />
                         </WobbleCard>
                       </CardItem>
