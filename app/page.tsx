@@ -11,7 +11,6 @@ import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { Vortex } from '@/components/ui/vortex';
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip';
 import { Globe, Clock, Truck, Package, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin, ArrowRight, HelpCircle } from 'lucide-react';
-import { TracingBeam } from '@/components/ui/tracing-beam';
 import { Button as MovingBorderButton } from '@/components/ui/moving-border';
 import { PlaceholdersAndVanishInput } from '@/components/ui/placeholders-and-vanish-input';
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
@@ -267,7 +266,6 @@ export default function Home() {
         </AuroraBackground>
       </section>
 
-      <TracingBeam className="h-full">
 
         {/* Stats Section - New */}
         <StatsSection />
@@ -415,14 +413,13 @@ export default function Home() {
             <FAQ />
           </div>
         </section>
-      </TracingBeam>
 
       {/* Final CTA with Vortex */}
       <section className="w-full mx-auto rounded-md h-[40rem] overflow-hidden relative bg-surface-container-low border-t border-outline-variant/10">
         <Vortex
           backgroundColor="transparent"
           rangeY={400}
-          particleCount={150}
+          particleCount={80}
           baseHue={45}
           className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
         >
