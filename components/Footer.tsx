@@ -55,7 +55,7 @@ export default function Footer() {
         </div>
       </div>
       
-      <div className="max-w-screen-2xl mx-auto px-12 mt-20 pt-10 border-t border-outline/5 text-center">
+      <div className="max-w-screen-2xl mx-auto px-6 md:px-12 mt-20 pt-10 border-t border-outline/5 text-center">
         <p className="text-on-surface-variant font-headline text-[10px] uppercase tracking-[0.2em] opacity-50">
           © 2026 International Courier & Cargo. All Rights Reserved. Engineered by Comet.
         </p>

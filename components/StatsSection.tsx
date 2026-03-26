@@ -43,7 +43,7 @@ export const StatsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, i) => (
             <FadeIn key={i} delay={i * 0.1}>
-              <div className="group p-8 rounded-2xl bg-white/70 backdrop-blur-md border border-slate-200 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5">
+              <div className="group p-6 md:p-8 rounded-2xl bg-white/70 backdrop-blur-md border border-slate-200 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100 group-hover:scale-110 transition-transform">
                     {stat.icon}

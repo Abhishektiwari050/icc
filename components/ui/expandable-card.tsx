@@ -61,15 +61,15 @@ export function ExpandableCard({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, transition: { duration: 0.05 } }}
-              className="flex absolute top-6 right-6 items-center justify-center bg-white dark:bg-neutral-800 rounded-full h-10 w-10 shadow-2xl z-[102]"
+              className="flex absolute top-6 right-6 items-center justify-center bg-white rounded-full h-10 w-10 shadow-2xl z-[102]"
               onClick={() => setActive(null)}
             >
-              <X className="h-6 w-6 text-neutral-600 dark:text-neutral-400" />
+              <X className="h-6 w-6 text-neutral-600" />
             </motion.button>
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className="w-full max-w-[600px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 rounded-3xl overflow-hidden shadow-2xl"
+              className="w-full max-w-[600px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white rounded-3xl overflow-hidden shadow-2xl"
             >
               <motion.div layoutId={`image-${active.title}-${id}`}>
                 <img
@@ -86,7 +86,7 @@ export function ExpandableCard({
                   <div>
                     <motion.h3
                       layoutId={`title-${active.title}-${id}`}
-                      className="text-2xl font-black font-headline text-neutral-800 dark:text-neutral-100 uppercase tracking-tighter"
+                      className="text-2xl font-black font-headline text-neutral-800 uppercase tracking-tighter"
                     >
                       {active.title}
                     </motion.h3>
@@ -111,7 +111,7 @@ export function ExpandableCard({
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="text-slate-700 dark:text-neutral-400 font-body leading-relaxed text-sm md:text-base font-medium"
+                  className="text-slate-700 font-body leading-relaxed text-sm md:text-base font-medium"
                 >
                   {typeof active.content === "function"
                     ? active.content()
@@ -142,20 +142,20 @@ export function ExpandableCard({
             <div className="flex-1 min-w-0">
               <motion.h3
                 layoutId={`title-${card.title}-${id}`}
-                className="font-bold text-neutral-800 dark:text-neutral-100 truncate text-sm md:text-base uppercase tracking-tight"
+                className="font-bold text-neutral-800 truncate text-sm md:text-base uppercase tracking-tight"
               >
                 {card.title}
               </motion.h3>
               <motion.p
                 layoutId={`description-${card.description}-${id}`}
-                  className="text-slate-800 dark:text-neutral-400 text-xs truncate font-medium"
+                  className="text-slate-800 text-xs truncate font-medium"
               >
                 {card.description}
               </motion.p>
             </div>
             <motion.span
               layoutId={`button-${card.title}-${id}`}
-              className="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center text-neutral-600 dark:text-neutral-300 group-hover:bg-primary group-hover:text-black transition-colors"
+              className="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-200 flex items-center justify-center text-neutral-600 group-hover:bg-primary group-hover:text-black transition-colors"
             >
               +
             </motion.span>

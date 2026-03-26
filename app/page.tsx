@@ -208,7 +208,7 @@ export default function Home() {
                       Next-Gen Freight Architecture
                     </span>
                   </div>
-                  <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-slate-900 leading-[0.9] tracking-tighter uppercase font-headline">
+                  <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black text-slate-900 leading-[0.9] tracking-tighter uppercase font-headline">
                     <TextReveal text="Architectural Precision In Global Logistics." />
                   </h1>
                 </FadeIn>
@@ -239,9 +239,9 @@ export default function Home() {
               </div>
 
               {/* 3D-Look Truck with Wobble & 3D-Card */}
-              <div className="hidden lg:block lg:col-span-5 relative z-20">
+              <div className="lg:col-span-5 relative z-20 mt-12 lg:mt-0">
                 <FadeIn delay={0.3}>
-                  <CardContainer className="inter-var w-full translate-x-12">
+                  <CardContainer className="inter-var w-full lg:translate-x-12">
                     <CardBody className="bg-white/80 backdrop-blur-sm relative group/card border-slate-200/50 w-full h-auto rounded-3xl p-8 border shadow-2xl transition-all duration-500 hover:scale-[1.02]">
                       <CardItem
                         translateZ="50"
@@ -284,8 +284,8 @@ export default function Home() {
         {/* Quick Action Bar - Enhanced with Vanish Input */}
         <section id="tracking-input" className="max-w-screen-2xl mx-auto px-8 mb-24 relative z-20">
           <FadeIn delay={0.2}>
-            <div className="bg-white/90 p-8 rounded-2xl shadow-2xl flex flex-col lg:flex-row gap-8 items-center border border-slate-200 backdrop-blur-md">
-              <div className="flex-1 w-full scale-105">
+            <div className="bg-white/90 p-4 md:p-8 rounded-2xl shadow-2xl flex flex-col lg:flex-row gap-8 items-center border border-slate-200 backdrop-blur-md">
+              <div className="flex-1 w-full md:scale-105">
                 <label className="block font-label text-xs uppercase tracking-widest text-slate-500 mb-4 font-bold text-center lg:text-left">Track Your Shipment</label>
                 <PlaceholdersAndVanishInput 
                   placeholders={placeholders}
