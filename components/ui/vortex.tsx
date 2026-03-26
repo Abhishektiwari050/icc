@@ -101,7 +101,13 @@ export const Vortex = (props: VortexProps) => {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = backgroundColor;
+    let finalBg = backgroundColor;
+    if (backgroundColor.startsWith("var(")) {
+      const varName = backgroundColor.slice(4, -1);
+      finalBg = getComputedStyle(document.documentElement).getPropertyValue(varName).trim() || "#000000";
+    }
+
+    ctx.fillStyle = finalBg;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     drawParticles(ctx);

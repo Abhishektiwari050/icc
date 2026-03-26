@@ -198,40 +198,41 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-surface">
-      <TracingBeam className="h-full">
-        {/* Hero Section */}
-        <section className="relative pt-32 pb-20 md:pt-48 md:pb-40 overflow-hidden min-h-[90vh] bg-neutral-950">
-          <ShootingStars />
-          <StarsBackground />
-          <div className="max-w-screen-2xl mx-auto px-8 relative z-10">
-            <div className="max-w-3xl">
-              <h1 className="text-white font-headline text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50">
-                <TextReveal text="Architectural Precision In Global Logistics." />
-              </h1>
-              <div className="text-white/80 text-lg md:text-xl font-body max-w-xl mb-12 leading-relaxed">
-                Fast, secure, and reliable shipping across <FlipWords words={words} className="text-primary font-bold" /> and worldwide. 
-                We don&apos;t just move cargo; we engineer connections across 50+ countries.
-              </div>
-              <FadeIn delay={0.4} className="flex flex-wrap gap-4">
-                <Link href="/tracking">
-                  <MovingBorderButton
-                    borderRadius="0.5rem"
-                    className="bg-primary text-on-primary border-primary font-headline font-extrabold uppercase tracking-widest text-sm"
-                  >
-                    Track Shipment
-                  </MovingBorderButton>
-                </Link>
-                <Link href="/book">
-                  <button
-                    className="bg-transparent border border-white/30 text-white px-8 py-4 rounded-md font-headline font-extrabold uppercase tracking-widest text-sm hover:bg-white/10 transition-all backdrop-blur-sm h-[56px]"
-                  >
-                    Book a Delivery
-                  </button>
-                </Link>
-              </FadeIn>
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-40 overflow-hidden min-h-[90vh] bg-background">
+        <ShootingStars />
+        <StarsBackground />
+        <div className="max-w-screen-2xl mx-auto px-8 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-white font-headline text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50">
+              <TextReveal text="Architectural Precision In Global Logistics." />
+            </h1>
+            <div className="text-white/80 text-lg md:text-xl font-body max-w-xl mb-12 leading-relaxed">
+              Fast, secure, and reliable shipping across <FlipWords words={words} className="text-primary font-bold" /> and worldwide. 
+              We don&apos;t just move cargo; we engineer connections across 50+ countries.
             </div>
+            <FadeIn delay={0.4} className="flex flex-wrap gap-4">
+              <Link href="/tracking">
+                <MovingBorderButton
+                  borderRadius="0.5rem"
+                  className="bg-primary text-on-primary border-primary font-headline font-extrabold uppercase tracking-widest text-sm"
+                >
+                  Track Shipment
+                </MovingBorderButton>
+              </Link>
+              <Link href="/book">
+                <button
+                  className="bg-transparent border border-white/30 text-white px-8 py-4 rounded-md font-headline font-extrabold uppercase tracking-widest text-sm hover:bg-white/10 transition-all backdrop-blur-sm h-[56px]"
+                >
+                  Book a Delivery
+                </button>
+              </Link>
+            </FadeIn>
           </div>
-        </section>
+        </div>
+      </section>
+
+      <TracingBeam className="h-full">
 
         {/* Stats Section - New */}
         <StatsSection />
@@ -380,7 +381,7 @@ export default function Home() {
       {/* Final CTA with Vortex */}
       <section className="w-full mx-auto rounded-md h-[40rem] overflow-hidden relative">
         <Vortex
-          backgroundColor="black"
+          backgroundColor="var(--background)"
           rangeY={800}
           particleCount={500}
           baseHue={45}
