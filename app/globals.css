@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/** @tailwind theme */
 @theme {
   --color-surface-container-highest: #e4e2e1;
   --color-outline-variant: #c7c5d1;
@@ -48,10 +49,20 @@
   --color-on-tertiary-container: #5d88b0;
   --color-surface-container: #f0eded;
   --color-primary-fixed: #e0e0ff;
+  --animate-aurora: aurora 60s linear infinite;
 
   --font-headline: var(--font-headline);
   --font-body: var(--font-body);
   --font-label: var(--font-label);
+}
+
+@keyframes aurora {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
 }
 
 .hero-gradient {
@@ -67,7 +78,32 @@
   background: linear-gradient(135deg, #11144a 0%, #3e4278 100%);
 }
 
+.bg-grid-accent {
+  background-image: radial-gradient(circle, #F5C842 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
 .perspective-1000 {
   perspective: 1000px;
 }
 
+/* Lenis smooth scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
