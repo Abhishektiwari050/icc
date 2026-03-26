@@ -7,9 +7,6 @@ import { useRef } from 'react';
 import { FadeIn, TextReveal } from '@/components/ui/animations';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { FlipWords } from '@/components/ui/flip-words';
-import { SparklesCore } from '@/components/ui/sparkles';
-import { ShootingStars } from '@/components/ui/shooting-stars';
-import { StarsBackground } from '@/components/ui/stars-background';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { Vortex } from '@/components/ui/vortex';
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip';
@@ -198,38 +195,38 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-surface">
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-48 md:pb-40 overflow-hidden min-h-[90vh] bg-background">
-        <ShootingStars />
-        <StarsBackground />
-        <div className="max-w-screen-2xl mx-auto px-8 relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="text-white font-headline text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50">
-              <TextReveal text="Architectural Precision In Global Logistics." />
-            </h1>
-            <div className="text-white/80 text-lg md:text-xl font-body max-w-xl mb-12 leading-relaxed">
-              Fast, secure, and reliable shipping across <FlipWords words={words} className="text-primary font-bold" /> and worldwide. 
-              We don&apos;t just move cargo; we engineer connections across 50+ countries.
+      {/* Hero Section - Refined for Light Theme */}
+      <section className="relative overflow-hidden min-h-[95vh] flex items-center">
+        <AuroraBackground className="flex-1">
+          <div className="max-w-screen-2xl mx-auto px-8 relative z-10 w-full">
+            <div className="max-w-4xl pt-20">
+              <h1 className="text-slate-900 font-headline text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter mb-8">
+                <TextReveal text="Architectural Precision In Global Logistics." />
+              </h1>
+              <div className="text-slate-700 text-lg md:text-xl font-body max-w-2xl mb-12 leading-relaxed">
+                Fast, secure, and reliable shipping across <FlipWords words={words} className="text-primary font-bold" /> and worldwide. 
+                We don&apos;t just move cargo; we engineer connections across 50+ countries.
+              </div>
+              <FadeIn delay={0.4} className="flex flex-wrap gap-4">
+                <Link href="/tracking">
+                  <MovingBorderButton
+                    borderRadius="0.5rem"
+                    className="bg-primary text-on-primary border-primary font-headline font-extrabold uppercase tracking-widest text-sm"
+                  >
+                    Track Shipment
+                  </MovingBorderButton>
+                </Link>
+                <Link href="/book">
+                  <button
+                    className="bg-white border border-slate-200 text-slate-900 px-8 py-4 rounded-md font-headline font-extrabold uppercase tracking-widest text-sm hover:bg-slate-50 transition-all shadow-sm h-[56px]"
+                  >
+                    Book a Delivery
+                  </button>
+                </Link>
+              </FadeIn>
             </div>
-            <FadeIn delay={0.4} className="flex flex-wrap gap-4">
-              <Link href="/tracking">
-                <MovingBorderButton
-                  borderRadius="0.5rem"
-                  className="bg-primary text-on-primary border-primary font-headline font-extrabold uppercase tracking-widest text-sm"
-                >
-                  Track Shipment
-                </MovingBorderButton>
-              </Link>
-              <Link href="/book">
-                <button
-                  className="bg-transparent border border-white/30 text-white px-8 py-4 rounded-md font-headline font-extrabold uppercase tracking-widest text-sm hover:bg-white/10 transition-all backdrop-blur-sm h-[56px]"
-                >
-                  Book a Delivery
-                </button>
-              </Link>
-            </FadeIn>
           </div>
-        </div>
+        </AuroraBackground>
       </section>
 
       <TracingBeam className="h-full">
@@ -379,9 +376,9 @@ export default function Home() {
       </TracingBeam>
 
       {/* Final CTA with Vortex */}
-      <section className="w-full mx-auto rounded-md h-[40rem] overflow-hidden relative">
+      <section className="w-full mx-auto rounded-md h-[40rem] overflow-hidden relative bg-surface-container-low border-t border-outline-variant/10">
         <Vortex
-          backgroundColor="var(--background)"
+          backgroundColor="transparent"
           rangeY={800}
           particleCount={500}
           baseHue={45}
@@ -389,10 +386,10 @@ export default function Home() {
         >
           <div className="max-w-screen-2xl mx-auto px-6 md:px-8 relative z-20 text-center">
             <FadeIn>
-              <h2 className="text-white text-5xl md:text-7xl font-black font-headline tracking-tighter uppercase mb-8">
+              <h2 className="text-slate-900 text-5xl md:text-7xl font-black font-headline tracking-tighter uppercase mb-8">
                 Ship Globally <br /> <span className="text-primary">With Confidence</span>
               </h2>
-              <p className="text-white/80 max-w-2xl mx-auto mb-12 font-body text-lg leading-relaxed">
+              <p className="text-slate-700 max-w-2xl mx-auto mb-12 font-body text-lg leading-relaxed">
                 Ready to experience the next generation of industrial logistics? Start your journey with the Global Architects today.
               </p>
               <div className="flex flex-col sm:flex-row justify-center items-center gap-8">
@@ -406,7 +403,7 @@ export default function Home() {
                   </MovingBorderButton>
                 </Link>
                 <Link href="/contact">
-                  <button className="w-full sm:w-auto bg-transparent border border-white/30 text-white px-12 py-4 h-16 rounded-lg font-headline font-bold uppercase tracking-widest text-sm hover:bg-white/10 transition-all">
+                  <button className="w-full sm:w-auto bg-white border border-slate-200 text-slate-900 px-12 py-4 h-16 rounded-lg font-headline font-bold uppercase tracking-widest text-sm hover:bg-slate-50 transition-all shadow-sm">
                     Talk to an Expert
                   </button>
                 </Link>

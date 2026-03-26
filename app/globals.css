@@ -1,34 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --on-background: #1b1c1c;
+  --background: #fdfdfd;
+  --on-background: #0a0a0a;
   --surface: #ffffff;
-  --on-surface: #1b1c1c;
-  --surface-container-low: #f6f3f2;
-  --surface-container-high: #f0eded;
-  --surface-container-highest: #e4e2e1;
-  --surface-variant: #e4e2e1;
-  --outline: #777680;
-  --outline-variant: #c7c5d1;
-  --on-surface-variant: #44474e;
+  --on-surface: #0a0a0a;
+  --surface-container-low: #f8f9fa;
+  --surface-container-high: #e9ecef;
+  --surface-container-highest: #dee2e6;
+  --surface-variant: #f1f3f5;
+  --outline: #adb5bd;
+  --outline-variant: #ced4da;
+  --on-surface-variant: #495057;
   --primary: #F5C842;
   --on-primary: #000000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0b14;
-    --on-background: #ffffff;
-    --surface: #0a0b14;
-    --on-surface: #ffffff;
-    --surface-container-low: #141521;
-    --surface-container-high: #1c1d29;
-    --surface-container-highest: #282936;
-    --surface-variant: #282936;
-    --outline: #8e9099;
-    --outline-variant: #44474e;
-    --on-surface-variant: #c4c6d0;
+    /* Even in dark mode, we keep a "light-leaning" but slightly more tempered palette if forced */
+    --background: #f8f9fa;
+    --on-background: #111111;
+    --surface: #ffffff;
+    --on-surface: #111111;
   }
 }
 
