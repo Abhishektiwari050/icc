@@ -198,9 +198,9 @@ export default function Home() {
       {/* Hero Section - Refined for Light Theme */}
       <section className="relative overflow-hidden min-h-[95vh] flex items-center">
         <AuroraBackground className="flex-1">
-          <div className="max-w-screen-2xl mx-auto px-8 relative z-10 w-full">
-            <div className="max-w-7xl pt-24 relative grid lg:grid-cols-12 gap-12 items-center">
-              <div className="lg:col-span-7 flex flex-col justify-center gap-12 sm:gap-16 pt-32 sm:pt-40 lg:pt-0 relative z-10">
+          <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 relative z-10 w-full">
+            <div className="max-w-7xl pt-16 md:pt-24 relative grid lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-7 flex flex-col justify-center gap-12 sm:gap-16 pt-12 md:pt-40 lg:pt-0 relative z-10">
                 <FadeIn delay={0.1}>
                   <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 border border-primary/10 rounded-full mb-4">
                     <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
@@ -208,7 +208,7 @@ export default function Home() {
                       Next-Gen Freight Architecture
                     </span>
                   </div>
-                  <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black text-slate-900 leading-[0.9] tracking-tighter uppercase font-headline">
+                  <h1 className="text-3xl sm:text-6xl lg:text-8xl font-black text-slate-900 leading-[0.9] tracking-tighter uppercase font-headline">
                     <TextReveal text="Architectural Precision In Global Logistics." />
                   </h1>
                 </FadeIn>
