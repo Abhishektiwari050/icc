@@ -333,7 +333,7 @@ export default function Home() {
         </section>
 
         {/* Process Timeline */}
-        <section id="process" className="py-32 bg-surface overflow-hidden relative border-b border-outline/10">
+        <section id="process" className="py-32 bg-surface relative border-b border-outline/10">
           <div className="absolute inset-0 opacity-5 pointer-events-none bg-grid-accent" />
           <div className="max-w-screen-2xl mx-auto px-6 md:px-8 relative z-10">
             <FadeIn className="text-center mb-20">
