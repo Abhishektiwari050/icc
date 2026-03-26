@@ -48,15 +48,15 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         {data.map((item, index) => (
           <div
             key={index}
-            className="sticky top-0 min-h-screen flex justify-start pt-20 md:pt-40 md:gap-10 bg-white border-t border-slate-100/50 shadow-[0_-20px_50px_-10px_rgba(0,0,0,0.05)]"
+            className="sticky top-0 min-h-screen flex flex-col md:flex-row justify-start pt-20 md:pt-40 md:gap-10 bg-white border-t border-slate-200 shadow-[0_-20px_50px_-10px_rgba(0,0,0,0.1)] transition-transform duration-500 ease-out"
             style={{ 
               zIndex: (index + 1) * 10,
-              marginTop: index === 0 ? 0 : "-10vh" // Slight overlap feel
+              boxShadow: "0 -30px 60px -15px rgba(0,0,0,0.1)"
             }}
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white flex items-center justify-center border border-slate-200 shadow-sm">
-                <div className="h-4 w-4 rounded-full bg-primary border border-primary/20 p-2" />
+              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white flex items-center justify-center border-2 border-primary shadow-lg ring-4 ring-primary/5">
+                <div className="h-4 w-4 rounded-full bg-primary animate-pulse" />
               </div>
               <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-black font-headline tracking-tighter uppercase text-slate-900 drop-shadow-sm">
                 {item.title}

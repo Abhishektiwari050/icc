@@ -111,7 +111,7 @@ export function ExpandableCard({
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="text-neutral-600 dark:text-neutral-400 font-body leading-relaxed text-sm md:text-base"
+                  className="text-slate-700 dark:text-neutral-400 font-body leading-relaxed text-sm md:text-base font-medium"
                 >
                   {typeof active.content === "function"
                     ? active.content()
@@ -148,7 +148,7 @@ export function ExpandableCard({
               </motion.h3>
               <motion.p
                 layoutId={`description-${card.description}-${id}`}
-                className="text-neutral-500 dark:text-neutral-400 text-xs truncate"
+                  className="text-slate-800 dark:text-neutral-400 text-xs truncate font-medium"
               >
                 {card.description}
               </motion.p>

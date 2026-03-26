@@ -48,7 +48,7 @@ export const StatsSection = () => {
                   <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100 group-hover:scale-110 transition-transform">
                     {stat.icon}
                   </div>
-                  <span className="text-sm font-label uppercase tracking-widest text-slate-500 font-bold">
+                  <span className="text-sm font-label uppercase tracking-widest text-slate-800 font-bold">
                     {stat.label}
                   </span>
                 </div>
@@ -56,7 +56,7 @@ export const StatsSection = () => {
                   <span className="text-4xl md:text-5xl font-black font-headline text-slate-900 tracking-tighter mb-2 group-hover:text-primary transition-colors">
                     {stat.value}
                   </span>
-                  <p className="text-sm text-slate-600 font-body leading-relaxed">
+                  <p className="text-sm text-slate-900 font-body font-medium leading-relaxed">
                     {stat.description}
                   </p>
                 </div>

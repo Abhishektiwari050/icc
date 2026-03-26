@@ -31,7 +31,7 @@ export function WorldMap({
     const map = new DottedMap({ height: 100, grid: "diagonal" });
     return map.getSVG({
       radius: 0.22,
-      color: theme === "dark" ? "#FFFFFF40" : "#00000015", // Subtle dots for light theme
+      color: theme === "dark" ? "#FFFFFF40" : "#00000050", // Further darkened for maximum visibility
       shape: "circle",
       backgroundColor: theme === "dark" ? "black" : "transparent",
     });

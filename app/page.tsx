@@ -15,13 +15,14 @@ import { TracingBeam } from '@/components/ui/tracing-beam';
 import { Button as MovingBorderButton } from '@/components/ui/moving-border';
 import { PlaceholdersAndVanishInput } from '@/components/ui/placeholders-and-vanish-input';
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
-import { CardBody, CardContainer, CardItem } from '@/components/ui/3d-card';
 import { Timeline } from '@/components/ui/timeline';
 import { WorldMap } from '@/components/ui/world-map';
 import { AnimatedTestimonials } from '@/components/ui/animated-testimonials';
 import { LampContainer } from '@/components/ui/lamp';
 import { FAQ } from '@/components/ui/faq';
 import { StatsSection } from '@/components/StatsSection';
+import { WobbleCard } from '@/components/ui/wobble-card';
+import { CardBody, CardContainer, CardItem } from '@/components/ui/3d-card';
 
 interface Service {
   title: string;
@@ -199,83 +200,68 @@ export default function Home() {
       <section className="relative overflow-hidden min-h-[95vh] flex items-center">
         <AuroraBackground className="flex-1">
           <div className="max-w-screen-2xl mx-auto px-8 relative z-10 w-full">
-            <div className="max-w-4xl pt-20 relative">
-              {/* Floating 3D Assets */}
-              <motion.div
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ 
-                  opacity: 1, 
-                  x: 0,
-                  y: [0, -20, 0],
-                  rotate: [0, 2, -2, 0]
-                }}
-                transition={{ 
-                  duration: 5, 
-                  repeat: Infinity, 
-                  repeatType: "reverse",
-                  ease: "easeInOut"
-                }}
-                className="absolute -right-20 md:-right-40 top-0 w-64 md:w-96 hidden lg:block pointer-events-none select-none"
-              >
-                <Image 
-                  src="/assets/images/hero-plane.png" 
-                  alt="Cargo Plane" 
-                  width={600} 
-                  height={400} 
-                  className="object-contain drop-shadow-2xl"
-                />
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ 
-                  opacity: 1, 
-                  x: 0,
-                  y: [0, 15, 0],
-                  rotate: [0, -1, 1, 0]
-                }}
-                transition={{ 
-                  duration: 6, 
-                  repeat: Infinity, 
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-                  delay: 0.5
-                }}
-                className="absolute -right-10 md:-right-20 bottom-0 w-48 md:w-80 hidden lg:block pointer-events-none select-none"
-              >
-                <Image 
-                  src="/assets/images/hero-truck.png" 
-                  alt="Delivery Truck" 
-                  width={500} 
-                  height={350} 
-                  className="object-contain drop-shadow-2xl"
-                />
-              </motion.div>
-
-              <h1 className="text-slate-900 font-headline text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter mb-8 relative z-10">
-                <TextReveal text="Architectural Precision In Global Logistics." />
-              </h1>
-              <div className="text-slate-700 text-lg md:text-xl font-body max-w-2xl mb-12 leading-relaxed">
-                Fast, secure, and reliable shipping across <FlipWords words={words} className="text-yellow-500 font-bold" /> and worldwide. 
-                We don&apos;t just move cargo; we engineer connections across 50+ countries.
+            <div className="max-w-4xl pt-20 relative grid lg:grid-cols-2 gap-12 items-center">
+              <div className="relative z-10">
+                <h1 className="text-slate-900 font-headline text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter mb-8">
+                  <TextReveal text="Architectural Precision In Global Logistics." />
+                </h1>
+                <div className="text-slate-800 text-lg md:text-xl font-body max-w-2xl mb-12 leading-relaxed font-medium">
+                  Fast, secure, and reliable shipping across <FlipWords words={words} className="text-yellow-600 font-bold" /> and worldwide. 
+                  We don&apos;t just move cargo; we engineer connections across 50+ countries.
+                </div>
+                <FadeIn delay={0.4} className="flex flex-wrap gap-4">
+                  <Link href="/tracking">
+                    <MovingBorderButton
+                      borderRadius="0.5rem"
+                      className="bg-primary text-on-primary border-primary font-headline font-extrabold uppercase tracking-widest text-sm"
+                    >
+                      Track Shipment
+                    </MovingBorderButton>
+                  </Link>
+                  <Link href="/book">
+                    <button
+                      className="bg-white border border-slate-300 text-slate-950 px-8 py-4 rounded-md font-headline font-extrabold uppercase tracking-widest text-sm hover:bg-slate-50 transition-all shadow-sm h-[56px]"
+                    >
+                      Book a Delivery
+                    </button>
+                  </Link>
+                </FadeIn>
               </div>
-              <FadeIn delay={0.4} className="flex flex-wrap gap-4">
-                <Link href="/tracking">
-                  <MovingBorderButton
-                    borderRadius="0.5rem"
-                    className="bg-primary text-on-primary border-primary font-headline font-extrabold uppercase tracking-widest text-sm"
-                  >
-                    Track Shipment
-                  </MovingBorderButton>
-                </Link>
-                <Link href="/book">
-                  <button
-                    className="bg-white border border-slate-200 text-slate-900 px-8 py-4 rounded-md font-headline font-extrabold uppercase tracking-widest text-sm hover:bg-slate-50 transition-all shadow-sm h-[56px]"
-                  >
-                    Book a Delivery
-                  </button>
-                </Link>
-              </FadeIn>
+
+              {/* 3D-Look Truck with Wobble & 3D-Card */}
+              <div className="hidden lg:block relative z-20">
+                <FadeIn delay={0.6}>
+                  <CardContainer className="inter-var">
+                    <CardBody className="bg-white/50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto h-auto rounded-xl p-6 border transition-all duration-300">
+                      <CardItem
+                        translateZ="50"
+                        className="text-xl font-bold text-slate-900"
+                      >
+                        Premium Freight Service
+                      </CardItem>
+                      <CardItem
+                        as="p"
+                        translateZ="60"
+                        className="text-slate-500 text-sm max-w-sm mt-2 font-medium"
+                      >
+                        Interactive Logistics Architecture
+                      </CardItem>
+                      <CardItem translateZ="100" className="w-full mt-4">
+                        <WobbleCard containerClassName="bg-slate-50 border border-slate-200">
+                          <Image
+                            src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=800&h=600"
+                            alt="Logistics Truck"
+                            width={800}
+                            height={600}
+                            className="object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
+                          />
+                        </WobbleCard>
+                      </CardItem>
+                    </CardBody>
+                  </CardContainer>
+                  <p className="text-center text-slate-400 text-xs mt-2 uppercase tracking-[0.2em] font-bold opacity-50">Interactive 3D Perspective View</p>
+                </FadeIn>
+              </div>
             </div>
           </div>
         </AuroraBackground>
@@ -435,8 +421,8 @@ export default function Home() {
       <section className="w-full mx-auto rounded-md h-[40rem] overflow-hidden relative bg-surface-container-low border-t border-outline-variant/10">
         <Vortex
           backgroundColor="transparent"
-          rangeY={800}
-          particleCount={500}
+          rangeY={400}
+          particleCount={150}
           baseHue={45}
           className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
         >

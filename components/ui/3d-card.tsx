@@ -90,7 +90,7 @@ export const CardBody = ({
 };
 
 export const CardItem = ({
-  as: Tag = "div",
+  componentAs: Tag = "div",
   children,
   className,
   translateX = 0,
@@ -101,7 +101,7 @@ export const CardItem = ({
   rotateZ = 0,
   ...rest
 }: {
-  as?: React.ElementType;
+  componentAs?: any;
   children: React.ReactNode;
   className?: string;
   translateX?: number | string;
