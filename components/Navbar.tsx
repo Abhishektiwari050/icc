@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { Globe, Menu, X, Rocket, Shield, Clock, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { StickyBanner } from '@/components/ui/sticky-banner';
 import { FloatingNav } from '@/components/ui/floating-navbar';
 

@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import React, { useEffect, useRef } from "react";
 import { createNoise3D } from "simplex-noise";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 interface VortexProps {
   children?: any;
@@ -37,7 +37,7 @@ export const Vortex = (props: VortexProps) => {
   const xOff = 0.00125;
   const yOff = 0.00125;
   const zOff = 0.0005;
-  const backgroundColor = props.backgroundColor || "#000000";
+  const backgroundColor = props.backgroundColor || "#ffffff";
   let tick = 0;
   const noise3D = createNoise3D();
   let particleProps = new Float32Array(particlePropsLength);
@@ -104,7 +104,7 @@ export const Vortex = (props: VortexProps) => {
     let finalBg = backgroundColor;
     if (backgroundColor.startsWith("var(")) {
       const varName = backgroundColor.slice(4, -1);
-      finalBg = getComputedStyle(document.documentElement).getPropertyValue(varName).trim() || "#000000";
+      finalBg = getComputedStyle(document.documentElement).getPropertyValue(varName).trim() || "#ffffff";
     }
 
     ctx.fillStyle = finalBg;
@@ -209,13 +209,13 @@ export const Vortex = (props: VortexProps) => {
   ) => {
     ctx.save();
     ctx.filter = "blur(8px) brightness(200%)";
-    ctx.globalCompositeOperation = "lighter";
+    ctx.globalCompositeOperation = "source-over";
     ctx.drawImage(canvas, 0, 0);
     ctx.restore();
 
     ctx.save();
     ctx.filter = "blur(4px) brightness(200%)";
-    ctx.globalCompositeOperation = "lighter";
+    ctx.globalCompositeOperation = "source-over";
     ctx.drawImage(canvas, 0, 0);
     ctx.restore();
   };
@@ -225,7 +225,7 @@ export const Vortex = (props: VortexProps) => {
     ctx: CanvasRenderingContext2D
   ) => {
     ctx.save();
-    ctx.globalCompositeOperation = "lighter";
+    ctx.globalCompositeOperation = "source-over";
     ctx.drawImage(canvas, 0, 0);
     ctx.restore();
   };

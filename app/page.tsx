@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { FadeIn, TextReveal } from '@/components/ui/animations';
 import { AuroraBackground } from '@/components/ui/aurora-background';
@@ -62,15 +62,15 @@ const BannerSection = () => {
           className="object-cover scale-125" 
           referrerPolicy="no-referrer" 
         />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background" />
+        <div className="absolute inset-0 bg-white/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white" />
       </motion.div>
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         <FadeIn>
-          <h2 className="text-5xl md:text-7xl lg:text-[100px] font-black font-headline tracking-tighter uppercase text-white mb-6 leading-none">
+          <h2 className="text-5xl md:text-7xl lg:text-[100px] font-black font-headline tracking-tighter uppercase text-slate-900 mb-6 leading-none">
             Logistics Without Boundaries
           </h2>
-          <p className="text-xl text-white/80 font-body max-w-2xl mx-auto">Setting the global standard for excellence in freight and courier services.</p>
+          <p className="text-xl text-slate-700 font-body max-w-2xl mx-auto">Setting the global standard for excellence in freight and courier services.</p>
         </FadeIn>
       </div>
     </section>
@@ -237,9 +237,9 @@ export default function Home() {
         {/* Quick Action Bar - Enhanced with Vanish Input */}
         <section id="tracking-input" className="max-w-screen-2xl mx-auto px-8 mb-24 relative z-20">
           <FadeIn delay={0.2}>
-            <div className="bg-surface-container-lowest p-8 rounded-2xl shadow-2xl flex flex-col lg:flex-row gap-8 items-center border border-outline-variant/10 backdrop-blur-md bg-white/5">
+            <div className="bg-white/90 p-8 rounded-2xl shadow-2xl flex flex-col lg:flex-row gap-8 items-center border border-slate-200 backdrop-blur-md">
               <div className="flex-1 w-full scale-105">
-                <label className="block font-label text-xs uppercase tracking-widest text-on-surface-variant mb-4 font-bold text-center lg:text-left">Track Your Shipment</label>
+                <label className="block font-label text-xs uppercase tracking-widest text-slate-500 mb-4 font-bold text-center lg:text-left">Track Your Shipment</label>
                 <PlaceholdersAndVanishInput 
                   placeholders={placeholders}
                   onChange={(e) => console.log(e.target.value)}

@@ -65,10 +65,6 @@
   --color-primary-fixed: #e0e0ff;
   
   --animate-aurora: aurora 60s linear infinite;
-
-  --font-headline: var(--font-headline);
-  --font-body: var(--font-body);
-  --font-label: var(--font-label);
 }
 
 @keyframes aurora {
