@@ -200,14 +200,25 @@ export default function Home() {
         <AuroraBackground className="flex-1">
           <div className="max-w-screen-2xl mx-auto px-8 relative z-10 w-full">
             <div className="max-w-7xl pt-24 relative grid lg:grid-cols-12 gap-12 items-center">
-              <div className="lg:col-span-7 relative z-10">
-                <h1 className="text-slate-900 font-headline text-6xl md:text-8xl lg:text-[110px] font-extrabold leading-[0.9] tracking-tighter mb-10">
-                  <TextReveal text="Architectural Precision In Global Logistics." />
-                </h1>
-                <div className="text-slate-800 text-xl md:text-2xl font-body max-w-3xl mb-12 leading-relaxed font-medium opacity-90">
-                  Fast, secure, and reliable shipping across <FlipWords words={words} className="text-yellow-600 font-bold" /> and worldwide. 
-                  We engineering connections across 50+ countries with technical mastery.
-                </div>
+              <div className="lg:col-span-7 flex flex-col justify-center gap-12 sm:gap-16 pt-32 sm:pt-40 lg:pt-0 relative z-10">
+                <FadeIn delay={0.1}>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 border border-primary/10 rounded-full mb-4">
+                    <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">
+                      Next-Gen Freight Architecture
+                    </span>
+                  </div>
+                  <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-slate-900 leading-[0.9] tracking-tighter uppercase font-headline">
+                    <TextReveal text="Architectural Precision In Global Logistics." />
+                  </h1>
+                </FadeIn>
+
+                <FadeIn delay={0.2} className="max-w-2xl">
+                  <div className="text-lg sm:text-xl text-slate-800 leading-relaxed font-medium opacity-90">
+                    Fast, secure, and reliable shipping across <FlipWords words={words} className="text-yellow-600 font-bold" /> and worldwide.
+                    We engineering connections across 50+ countries with technical mastery.
+                  </div>
+                </FadeIn>
                 <FadeIn delay={0.4} className="flex flex-wrap gap-4">
                   <Link href="/tracking">
                     <MovingBorderButton
@@ -229,7 +240,7 @@ export default function Home() {
 
               {/* 3D-Look Truck with Wobble & 3D-Card */}
               <div className="hidden lg:block lg:col-span-5 relative z-20">
-                <FadeIn delay={0.6}>
+                <FadeIn delay={0.3}>
                   <CardContainer className="inter-var w-full translate-x-12">
                     <CardBody className="bg-white/80 backdrop-blur-sm relative group/card border-slate-200/50 w-full h-auto rounded-3xl p-8 border shadow-2xl transition-all duration-500 hover:scale-[1.02]">
                       <CardItem
