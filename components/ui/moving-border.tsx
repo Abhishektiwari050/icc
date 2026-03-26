@@ -42,6 +42,7 @@ export function Button({
     >
       <div
         className="absolute inset-0"
+        // eslint-disable-next-line react/no-inline-styles
         style={{ "--border-radius": `calc(${borderRadius} * 0.96)` } as React.CSSProperties}
       >
         <div className="absolute inset-0 [border-radius:var(--border-radius)]" />
@@ -60,6 +61,7 @@ export function Button({
           "relative bg-surface border border-outline/10 backdrop-blur-xl text-on-surface flex items-center justify-center w-full h-full text-sm antialiased",
           className
         )}
+        // eslint-disable-next-line react/no-inline-styles
         style={{ "--inner-radius": `calc(${borderRadius} * 0.96)` } as React.CSSProperties}
       >
         <div className="absolute inset-0 [border-radius:var(--inner-radius)] -z-1" />

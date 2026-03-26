@@ -130,6 +130,7 @@ const GlowingEffect = memo(
         />
         <div
           ref={containerRef}
+          // eslint-disable-next-line react/no-inline-styles
           style={
             {
               "--blur": `${blur}px`,

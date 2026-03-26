@@ -25,6 +25,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
 
   return (
     <div
+      // eslint-disable-next-line react/no-inline-styles
       style={{
         "--boxes-transform": `translate(-40%,-60%) skewX(-48deg) skewY(14deg) scale(0.675) rotate(0deg) translateZ(0)`,
       } as React.CSSProperties}
