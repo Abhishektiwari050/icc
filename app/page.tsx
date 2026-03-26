@@ -2,26 +2,94 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useRef } from 'react';
 import { FadeIn, TextReveal } from '@/components/ui/animations';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { FlipWords } from '@/components/ui/flip-words';
 import { SparklesCore } from '@/components/ui/sparkles';
-import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
-import { Timeline } from '@/components/ui/timeline';
-import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card';
-import { AnimatedTestimonials } from '@/components/ui/animated-testimonials';
-import { WorldMap } from '@/components/ui/world-map';
-import { BackgroundBeamsWithCollision } from '@/components/ui/background-beams-collision';
-import { LogoCloud } from '@/components/ui/logo-cloud';
-import { FAQ } from '@/components/ui/faq';
+import { ShootingStars } from '@/components/ui/shooting-stars';
+import { StarsBackground } from '@/components/ui/stars-background';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
+import { Vortex } from '@/components/ui/vortex';
+import { AnimatedTooltip } from '@/components/ui/animated-tooltip';
+import { Globe, Clock, Truck, Package, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin, ArrowRight, HelpCircle } from 'lucide-react';
 import { TracingBeam } from '@/components/ui/tracing-beam';
-import { Globe, Clock, Truck, Package, ArrowRight, ShieldCheck, Search, HelpCircle } from 'lucide-react';
+import { Button as MovingBorderButton } from '@/components/ui/moving-border';
+import { PlaceholdersAndVanishInput } from '@/components/ui/placeholders-and-vanish-input';
+import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
+import { CardBody, CardContainer, CardItem } from '@/components/ui/3d-card';
+import { Timeline } from '@/components/ui/timeline';
+import { WorldMap } from '@/components/ui/world-map';
+import { AnimatedTestimonials } from '@/components/ui/animated-testimonials';
+import { LampContainer } from '@/components/ui/lamp';
+import { FAQ } from '@/components/ui/faq';
+import { StatsSection } from '@/components/StatsSection';
+
+interface Service {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  className: string;
+  image: string;
+}
+
+interface ProcessItem {
+  title: string;
+  content: React.ReactNode;
+}
+
+interface Testimonial {
+  quote: string;
+  name: string;
+  designation: string;
+  src: string;
+}
+
+const BannerSection = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [-100, 100]);
+
+  return (
+    <section ref={ref} className="relative h-[70vh] flex items-center justify-center overflow-hidden">
+      <motion.div style={{ y }} className="absolute inset-0 z-0">
+        <Image 
+          src="https://images.unsplash.com/photo-1570646172679-13dd97607ff9?auto=format&fit=crop&q=80&w=1920&h=1080" 
+          alt="Cargo Airport" 
+          fill 
+          className="object-cover scale-125" 
+          referrerPolicy="no-referrer" 
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background" />
+      </motion.div>
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+        <FadeIn>
+          <h2 className="text-5xl md:text-7xl lg:text-[100px] font-black font-headline tracking-tighter uppercase text-white mb-6 leading-none">
+            Logistics Without Boundaries
+          </h2>
+          <p className="text-xl text-white/80 font-body max-w-2xl mx-auto">Setting the global standard for excellence in freight and courier services.</p>
+        </FadeIn>
+      </div>
+    </section>
+  );
+};
 
 export default function Home() {
   const words = ["Global", "India", "USA", "Europe", "Dubai", "Singapore"];
+  const placeholders = [
+    "Enter tracking number (e.g. ICC-482-901)",
+    "Track your international shipment",
+    "Where is your package?",
+    "ICC-123-456",
+  ];
 
-  const services = [
+  const services: Service[] = [
     {
       title: "International Shipping",
       description: "Seamless global transit via air and sea with door-to-door tracking and customs clearance support across 220+ countries.",
@@ -52,7 +120,7 @@ export default function Home() {
     },
   ];
 
-  const processData = [
+  const processData: ProcessItem[] = [
     {
       title: "01 BOOK",
       content: (
@@ -107,7 +175,7 @@ export default function Home() {
     },
   ];
 
-  const testimonials = [
+  const testimonials: Testimonial[] = [
     {
       quote: "ICC has completely transformed our supply chain. Their precision and reliability have allowed us to expand our operations globally with absolute confidence.",
       name: "Sarah Jenkins",
@@ -132,36 +200,30 @@ export default function Home() {
     <main className="min-h-screen bg-surface">
       <TracingBeam className="h-full">
         {/* Hero Section */}
-        <AuroraBackground className="pt-32 pb-20 md:pt-48 md:pb-40 overflow-hidden min-h-[90vh]">
-          <SparklesCore
-            id="tsparticleshero"
-            background="transparent"
-            minSize={0.6}
-            maxSize={1.4}
-            particleDensity={100}
-            className="w-full h-full absolute inset-0 z-0"
-            particleColor="#FFFFFF"
-          />
+        <section className="relative pt-32 pb-20 md:pt-48 md:pb-40 overflow-hidden min-h-[90vh] bg-neutral-950">
+          <ShootingStars />
+          <StarsBackground />
           <div className="max-w-screen-2xl mx-auto px-8 relative z-10">
             <div className="max-w-3xl">
               <h1 className="text-white font-headline text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50">
                 <TextReveal text="Architectural Precision In Global Logistics." />
               </h1>
               <div className="text-white/80 text-lg md:text-xl font-body max-w-xl mb-12 leading-relaxed">
-                Fast, secure, and reliable shipping across <FlipWords words={words} className="text-secondary-container font-bold" /> and worldwide. 
+                Fast, secure, and reliable shipping across <FlipWords words={words} className="text-primary font-bold" /> and worldwide. 
                 We don&apos;t just move cargo; we engineer connections across 50+ countries.
               </div>
               <FadeIn delay={0.4} className="flex flex-wrap gap-4">
                 <Link href="/tracking">
-                  <button
-                    className="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-md font-headline font-extrabold uppercase tracking-widest text-sm hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,214,96,0.3)]"
+                  <MovingBorderButton
+                    borderRadius="0.5rem"
+                    className="bg-primary text-on-primary border-primary font-headline font-extrabold uppercase tracking-widest text-sm"
                   >
                     Track Shipment
-                  </button>
+                  </MovingBorderButton>
                 </Link>
                 <Link href="/book">
                   <button
-                    className="bg-transparent border border-white/30 text-white px-8 py-4 rounded-md font-headline font-extrabold uppercase tracking-widest text-sm hover:bg-white/10 transition-all backdrop-blur-sm"
+                    className="bg-transparent border border-white/30 text-white px-8 py-4 rounded-md font-headline font-extrabold uppercase tracking-widest text-sm hover:bg-white/10 transition-all backdrop-blur-sm h-[56px]"
                   >
                     Book a Delivery
                   </button>
@@ -169,24 +231,28 @@ export default function Home() {
               </FadeIn>
             </div>
           </div>
-        </AuroraBackground>
+        </section>
 
-        {/* Quick Action Bar */}
-        <section className="max-w-screen-2xl mx-auto px-8 -mt-12 relative z-20">
-          <FadeIn delay={0.6}>
-            <div className="bg-surface-container-lowest p-8 rounded-xl shadow-2xl flex flex-col lg:flex-row gap-6 items-end border border-outline-variant/20 backdrop-blur-md bg-white/90">
-              <div className="flex-1 w-full">
-                <label className="block font-label text-xs uppercase tracking-widest text-on-surface-variant mb-3 font-semibold">Track Your Shipment</label>
-                <div className="relative">
-                  <input type="text" placeholder="Enter tracking number (e.g. ICC-482-901)" className="w-full bg-surface-container-highest border-none focus:ring-0 focus:border-b-2 focus:border-primary-container p-4 text-on-surface font-body rounded-md transition-all" />
-                  <Search className="w-6 h-6 absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant" />
-                </div>
+        {/* Stats Section - New */}
+        <StatsSection />
+
+        {/* Quick Action Bar - Enhanced with Vanish Input */}
+        <section id="tracking-input" className="max-w-screen-2xl mx-auto px-8 mb-24 relative z-20">
+          <FadeIn delay={0.2}>
+            <div className="bg-surface-container-lowest p-8 rounded-2xl shadow-2xl flex flex-col lg:flex-row gap-8 items-center border border-outline-variant/10 backdrop-blur-md bg-white/5">
+              <div className="flex-1 w-full scale-105">
+                <label className="block font-label text-xs uppercase tracking-widest text-on-surface-variant mb-4 font-bold text-center lg:text-left">Track Your Shipment</label>
+                <PlaceholdersAndVanishInput 
+                  placeholders={placeholders}
+                  onChange={(e) => console.log(e.target.value)}
+                  onSubmit={(e) => console.log("submitted")}
+                />
               </div>
               <div className="flex gap-4 w-full lg:w-auto">
-                <Link href="/book" className="flex-1 lg:flex-none bg-primary-container text-white px-10 py-4 rounded-md font-headline font-bold uppercase tracking-widest text-xs text-center flex items-center justify-center hover:bg-opacity-90 transition-all">
+                <Link href="/book" className="flex-1 lg:flex-none bg-primary text-on-primary px-10 py-4 h-14 rounded-full font-headline font-bold uppercase tracking-widest text-xs text-center flex items-center justify-center hover:scale-105 transition-all shadow-xl shadow-primary/10">
                   Book Shipment
                 </Link>
-                <Link href="/quote" className="flex-1 lg:flex-none bg-surface-container text-on-surface px-10 py-4 rounded-md font-headline font-bold uppercase tracking-widest text-xs hover:bg-surface-container-high text-center flex items-center justify-center transition-all">
+                <Link href="/quote" className="flex-1 lg:flex-none bg-surface-container-highest text-on-surface px-10 py-4 h-14 rounded-full font-headline font-bold uppercase tracking-widest text-xs hover:bg-surface-container-high text-center flex items-center justify-center transition-all border border-outline/10">
                   Get Pricing
                 </Link>
               </div>
@@ -195,7 +261,7 @@ export default function Home() {
         </section>
 
         {/* Services Section */}
-        <section className="py-32 bg-surface-container-low border-y border-outline/10 h-full">
+        <section id="services" className="py-32 bg-surface-container-low border-y border-outline/10 h-full">
           <div className="max-w-screen-2xl mx-auto px-6 md:px-8">
             <FadeIn className="mb-16 text-center">
               <div className="inline-block bg-surface-container-highest px-4 py-1.5 rounded-full mb-6 border border-outline/20">
@@ -233,7 +299,7 @@ export default function Home() {
         </section>
 
         {/* Process Timeline */}
-        <section className="py-32 bg-surface overflow-hidden relative border-b border-outline/10">
+        <section id="process" className="py-32 bg-surface overflow-hidden relative border-b border-outline/10">
           <div className="absolute inset-0 opacity-5 pointer-events-none bg-grid-accent" />
           <div className="max-w-screen-2xl mx-auto px-6 md:px-8 relative z-10">
             <FadeIn className="text-center mb-20">
@@ -248,7 +314,7 @@ export default function Home() {
         </section>
 
         {/* World Map Section */}
-        <section className="py-24 bg-surface overflow-hidden">
+        <section id="network" className="py-24 bg-surface overflow-hidden">
           <div className="max-w-7xl mx-auto px-6">
             <FadeIn className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-black font-headline tracking-tighter uppercase text-on-surface mb-6">
@@ -267,8 +333,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Social Proof & Certifications */}
-        <section className="py-24 bg-surface-container relative">
+        {/* Testimonials */}
+        <section id="testimonials" className="py-32 bg-surface-container-low relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-6">
             <FadeIn className="text-center mb-16">
               <h2 className="text-3xl font-black font-headline tracking-tighter uppercase text-on-surface">
@@ -278,77 +344,76 @@ export default function Home() {
             
             <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
 
-            <FadeIn delay={0.5} className="mt-20 pt-10 border-t border-outline/10">
-              <LogoCloud />
+            <FadeIn delay={0.5} className="mt-20 pt-10 border-t border-outline/10 flex justify-center">
+              <AnimatedTooltip items={[
+                { id: 1, name: "ISO 9001:2015", designation: "Quality Management Certified", image: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=100&h=100&fit=crop" },
+                { id: 2, name: "IATA CERTIFIED", designation: "International Air Transport", image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=100&h=100&fit=crop" },
+                { id: 3, name: "AEO AUTHORIZED", designation: "Authorized Economic Operator", image: "https://images.unsplash.com/photo-1554774853-aae0a22c8aa4?w=100&h=100&fit=crop" },
+                { id: 4, name: "TAPA SECURE", designation: "Transported Asset Protection", image: "https://images.unsplash.com/photo-1541746972996-4e0b0f43e01a?w=100&h=100&fit=crop" },
+              ]} />
             </FadeIn>
           </div>
         </section>
 
-        {/* Brand Statement */}
-        <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <Image 
-              src="https://images.unsplash.com/photo-1570646172679-13dd97607ff9?auto=format&fit=crop&q=80&w=1920&h=1080" 
-              alt="Cargo Airport" 
-              fill 
-              className="object-cover" 
-              referrerPolicy="no-referrer" 
-            />
-            <div className="absolute inset-0 bg-black/60" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background" />
-          </div>
-          <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-            <FadeIn>
-              <h2 className="text-5xl md:text-7xl lg:text-[100px] font-black font-headline tracking-tighter uppercase text-white mb-6 leading-none">
-                Logistics Without Boundaries
-              </h2>
-              <p className="text-xl text-white/80 font-body max-w-2xl mx-auto">Setting the global standard for excellence in freight and courier services.</p>
-            </FadeIn>
-          </div>
-        </section>
+        {/* Full-Width Banner with Parallax */}
+        <BannerSection />
 
-        {/* FAQ Section */}
-        <section className="py-24 bg-surface overflow-hidden">
-          <div className="max-w-4xl mx-auto px-6 md:px-8">
-            <FadeIn className="text-center mb-16">
+        {/* FAQ Section with Lamp Effect Header */}
+        <section className="bg-surface overflow-hidden relative">
+          <LampContainer className="pt-20">
+            <FadeIn className="text-center mb-16 relative z-50">
               <div className="flex items-center justify-center gap-2 text-primary uppercase font-headline font-bold tracking-widest text-sm mb-4">
                 <HelpCircle className="w-4 h-4" />
                 Frequently Asked Questions
               </div>
-              <h2 className="text-4xl md:text-5xl font-black font-headline tracking-tighter uppercase text-on-surface mb-6">
+              <h2 className="text-4xl md:text-6xl font-black font-headline tracking-tighter uppercase text-on-surface mb-6">
                 Technical <span className="text-primary">Insights</span>
               </h2>
             </FadeIn>
+          </LampContainer>
+          <div className="max-w-4xl mx-auto px-6 md:px-8 -mt-40 relative z-50 pb-32">
             <FAQ />
           </div>
         </section>
       </TracingBeam>
 
-      {/* Final CTA */}
-      <BackgroundBeamsWithCollision className="py-32">
-        <div className="max-w-screen-2xl mx-auto px-6 md:px-8 relative z-20 text-center">
-          <FadeIn>
-            <h2 className="text-5xl md:text-7xl font-black font-headline tracking-tighter uppercase text-on-surface mb-8">
-              Ship Globally <br /> <span className="text-primary">With Confidence</span>
-            </h2>
-            <p className="text-on-surface-variant max-w-2xl mx-auto mb-12 font-body text-lg">
-              Ready to experience the next generation of industrial logistics? Start your journey with the Global Architects today.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-              <Link href="/book">
-                <button className="w-full sm:w-auto bg-primary text-on-primary px-10 py-4 rounded-lg font-headline font-bold uppercase tracking-widest text-sm hover:bg-primary/90 transition-all shadow-[0_0_30px_rgba(245,200,66,0.3)]">
-                  Start Booking
-                </button>
-              </Link>
-              <Link href="/contact">
-                <button className="w-full sm:w-auto bg-transparent border border-outline/30 text-on-surface px-10 py-4 rounded-lg font-headline font-bold uppercase tracking-widest text-sm hover:bg-surface-container transition-all">
-                  Talk to an Expert
-                </button>
-              </Link>
-            </div>
-          </FadeIn>
-        </div>
-      </BackgroundBeamsWithCollision>
+      {/* Final CTA with Vortex */}
+      <section className="w-full mx-auto rounded-md h-[40rem] overflow-hidden relative">
+        <Vortex
+          backgroundColor="black"
+          rangeY={800}
+          particleCount={500}
+          baseHue={45}
+          className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
+        >
+          <div className="max-w-screen-2xl mx-auto px-6 md:px-8 relative z-20 text-center">
+            <FadeIn>
+              <h2 className="text-white text-5xl md:text-7xl font-black font-headline tracking-tighter uppercase mb-8">
+                Ship Globally <br /> <span className="text-primary">With Confidence</span>
+              </h2>
+              <p className="text-white/80 max-w-2xl mx-auto mb-12 font-body text-lg leading-relaxed">
+                Ready to experience the next generation of industrial logistics? Start your journey with the Global Architects today.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-8">
+                <Link href="/book">
+                  <MovingBorderButton
+                    borderRadius="0.5rem"
+                    className="bg-primary text-on-primary font-headline font-bold uppercase tracking-widest text-sm px-10 py-4 h-16 w-56 border-none"
+                    containerClassName="h-16 w-56"
+                  >
+                    Start Booking
+                  </MovingBorderButton>
+                </Link>
+                <Link href="/contact">
+                  <button className="w-full sm:w-auto bg-transparent border border-white/30 text-white px-12 py-4 h-16 rounded-lg font-headline font-bold uppercase tracking-widest text-sm hover:bg-white/10 transition-all">
+                    Talk to an Expert
+                  </button>
+                </Link>
+              </div>
+            </FadeIn>
+          </div>
+        </Vortex>
+      </section>
     </main>
   );
 }
