@@ -126,7 +126,7 @@ export default function Home() {
             Schedule your pickup through our digital portal or contact our local hub for custom requirements.
           </p>
           <div className="grid grid-cols-1 gap-4">
-             <Image src="https://images.unsplash.com/photo-1512428559083-a40516a3ee32?auto=format&fit=crop&q=80&w=600&h=400" alt="Booking" width={600} height={400} className="rounded-xl shadow-lg object-cover" />
+             <Image src="https://images.unsplash.com/photo-1512428559083-a40516a3ee32?auto=format&fit=crop&q=80&w=800&h=500" alt="Booking" width={800} height={500} className="rounded-xl shadow-2xl object-cover border border-slate-100" />
           </div>
         </div>
       ),
@@ -139,7 +139,7 @@ export default function Home() {
              Our specialized couriers collect the shipment with secure handling protocols and immediate scanning.
           </p>
           <div className="grid grid-cols-1 gap-4">
-             <Image src="https://images.unsplash.com/photo-1601275211244-431b61bb3e2a?auto=format&fit=crop&q=80&w=600&h=400" alt="Pickup" width={600} height={400} className="rounded-xl shadow-lg object-cover" />
+             <Image src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?auto=format&fit=crop&q=80&w=800&h=500" alt="Pickup" width={800} height={500} className="rounded-xl shadow-2xl object-cover border border-slate-100" />
           </div>
         </div>
       ),
@@ -152,7 +152,7 @@ export default function Home() {
              Live tracking and optimized routing across our global air & sea hubs ensuring maximum efficiency.
           </p>
           <div className="grid grid-cols-1 gap-4">
-             <Image src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&q=80&w=600&h=400" alt="Transit" width={600} height={400} className="rounded-xl shadow-lg object-cover" />
+             <Image src="https://images.unsplash.com/photo-1586528116311-ad86d7c4731a?auto=format&fit=crop&q=80&w=800&h=500" alt="Transit" width={800} height={500} className="rounded-xl shadow-2xl object-cover border border-slate-100" />
           </div>
         </div>
       ),
@@ -165,7 +165,7 @@ export default function Home() {
              Safe arrival with digital proof of delivery, instant notification, and recipient verification.
           </p>
           <div className="grid grid-cols-1 gap-4">
-             <Image src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?auto=format&fit=crop&q=80&w=600&h=400" alt="Delivered" width={600} height={400} className="rounded-xl shadow-lg object-cover" />
+             <Image src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&q=80&w=800&h=500" alt="Delivered" width={800} height={500} className="rounded-xl shadow-2xl object-cover border border-slate-100" />
           </div>
         </div>
       ),
@@ -333,7 +333,7 @@ export default function Home() {
         </section>
 
         {/* Process Timeline */}
-        <section id="process" className="py-32 bg-surface relative border-b border-outline/10">
+        <section id="process" className="py-32 bg-white relative border-b border-outline/10">
           <div className="absolute inset-0 opacity-5 pointer-events-none bg-grid-accent" />
           <div className="max-w-screen-2xl mx-auto px-6 md:px-8 relative z-10">
             <FadeIn className="text-center mb-20">
