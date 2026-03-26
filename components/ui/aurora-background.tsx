@@ -33,7 +33,7 @@ export const AuroraBackground = ({
           filter blur-[4px] invert
           after:content-[""] after:absolute after:inset-0 after:[background-image:var(--white-gradient),var(--aurora)] 
           after:[background-size:200%,_100%] 
-          after:animate-aurora after:[background-attachment:fixed]
+          after:hidden md:after:block after:animate-aurora after:[background-attachment:fixed]
           pointer-events-none
           absolute -inset-[10px] opacity-30 will-change-transform [transform:translateZ(0)]`,
             showRadialGradient &&
