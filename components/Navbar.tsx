@@ -5,11 +5,13 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { Globe, Menu, X, Rocket, Shield, Clock, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { StickyBanner } from '@/components/ui/sticky-banner';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { scrollY } = useScroll();
+  const [bannerVisible, setBannerVisible] = useState(true);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -23,6 +25,19 @@ export default function Navbar() {
     { name: 'Testimonials', link: '#testimonials', icon: <Shield className="w-4 h-4" /> },
     { name: 'Tracking', link: '#tracking-input', icon: <Search className="w-4 h-4" /> },
   ];
+
+  useMotionValueEvent(scrollY, "change", (current: number) => {
+    const prev = scrollY.getPrevious() ?? 0;
+    const direction = current - prev;
+    
+    if (current < 50) {
+      setBannerVisible(true);
+    } else if (direction > 0) {
+      setBannerVisible(false);
+    } else {
+      setBannerVisible(true);
+    }
+  });
 
   if (!mounted) return null;
 
@@ -57,7 +72,14 @@ export default function Navbar() {
         </div>
       </StickyBanner>
 
-      <nav className="fixed top-12 w-full z-50 flex justify-center px-6">
+      <motion.nav 
+        initial={false}
+        animate={{ 
+          top: bannerVisible ? 40 : 0,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="fixed w-full z-50 flex justify-center px-6"
+      >
          <div className="flex justify-between items-center w-full max-w-screen-2xl mx-auto bg-surface/80 backdrop-blur-md rounded-2xl border border-white/5 px-6 py-4 shadow-2xl">
             <Link href="/" className="flex items-center gap-2 group">
               <Globe className="w-8 h-8 text-primary group-hover:rotate-12 transition-transform duration-300" />
@@ -101,7 +123,7 @@ export default function Navbar() {
               </button>
             </div>
          </div>
-      </nav>
+      </motion.nav>
     </>
   );
 }
