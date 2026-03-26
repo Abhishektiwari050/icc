@@ -58,7 +58,7 @@ export function Button({
 
       <div
         className={cn(
-          "relative bg-surface border border-outline/10 backdrop-blur-xl text-on-surface flex items-center justify-center w-full h-full text-sm antialiased",
+          "relative bg-surface border border-outline/10 backdrop-blur-md text-on-surface flex items-center justify-center w-full h-full text-sm antialiased will-change-transform",
           className
         )}
         // eslint-disable-next-line react/no-inline-styles
@@ -132,6 +132,7 @@ export const MovingBorder = ({
           left: 0,
           display: "inline-block",
           transform,
+          willChange: "transform",
         }}
       >
         {children}

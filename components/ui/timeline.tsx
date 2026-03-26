@@ -48,7 +48,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         {data.map((item, index) => (
           <div
             key={index}
-            className="sticky top-[100px] min-h-[70vh] flex flex-col md:flex-row justify-start pt-20 md:pt-40 md:gap-10 bg-white border-t border-slate-200 shadow-[0_-30px_100px_-20px_rgba(0,0,0,0.15)] transition-all duration-700 ease-in-out"
+            className="sticky top-[100px] min-h-[70vh] flex flex-col md:flex-row justify-start pt-20 md:pt-40 md:gap-10 bg-white border-t border-slate-200 shadow-[0_-15px_60px_-10px_rgba(0,0,0,0.1)] transition-all duration-700 ease-in-out will-change-transform"
             style={{ 
               zIndex: (index + 1) * 10,
             }}
