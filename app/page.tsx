@@ -90,28 +90,28 @@ export default function Home() {
     {
       title: "International Shipping",
       description: "Seamless global transit via air and sea with door-to-door tracking and customs clearance support across 220+ countries.",
-      icon: <Globe className="w-10 h-10 text-primary" />,
+      icon: <Globe className="w-10 h-10 text-yellow-500" />,
       className: "md:col-span-2",
       image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=800&h=400"
     },
     {
       title: "Express Delivery",
       description: "Time-critical logistics for urgent documents and high-value small parcels.",
-      icon: <Clock className="w-10 h-10 text-primary" />,
+      icon: <Clock className="w-10 h-10 text-yellow-500" />,
       className: "md:col-span-1",
       image: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?auto=format&fit=crop&q=80&w=400&h=400"
     },
     {
       title: "Domestic Courier",
       description: "Comprehensive nationwide network reaching every corner of India with precision.",
-      icon: <Truck className="w-10 h-10 text-primary" />,
+      icon: <Truck className="w-10 h-10 text-yellow-500" />,
       className: "md:col-span-1",
       image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=400&h=400"
     },
     {
       title: "Business Logistics",
       description: "Tailored supply chain solutions and warehousing for enterprise partners requiring scale and reliability.",
-      icon: <Package className="w-10 h-10 text-primary" />,
+      icon: <Package className="w-10 h-10 text-yellow-500" />,
       className: "md:col-span-2",
       image: "https://images.unsplash.com/photo-1586528116311-ad86d7c4731a?auto=format&fit=crop&q=80&w=800&h=400"
     },
@@ -199,12 +199,64 @@ export default function Home() {
       <section className="relative overflow-hidden min-h-[95vh] flex items-center">
         <AuroraBackground className="flex-1">
           <div className="max-w-screen-2xl mx-auto px-8 relative z-10 w-full">
-            <div className="max-w-4xl pt-20">
-              <h1 className="text-slate-900 font-headline text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter mb-8">
+            <div className="max-w-4xl pt-20 relative">
+              {/* Floating 3D Assets */}
+              <motion.div
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ 
+                  opacity: 1, 
+                  x: 0,
+                  y: [0, -20, 0],
+                  rotate: [0, 2, -2, 0]
+                }}
+                transition={{ 
+                  duration: 5, 
+                  repeat: Infinity, 
+                  repeatType: "reverse",
+                  ease: "easeInOut"
+                }}
+                className="absolute -right-20 md:-right-40 top-0 w-64 md:w-96 hidden lg:block pointer-events-none select-none"
+              >
+                <Image 
+                  src="/assets/images/hero-plane.png" 
+                  alt="Cargo Plane" 
+                  width={600} 
+                  height={400} 
+                  className="object-contain drop-shadow-2xl"
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ 
+                  opacity: 1, 
+                  x: 0,
+                  y: [0, 15, 0],
+                  rotate: [0, -1, 1, 0]
+                }}
+                transition={{ 
+                  duration: 6, 
+                  repeat: Infinity, 
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+                className="absolute -right-10 md:-right-20 bottom-0 w-48 md:w-80 hidden lg:block pointer-events-none select-none"
+              >
+                <Image 
+                  src="/assets/images/hero-truck.png" 
+                  alt="Delivery Truck" 
+                  width={500} 
+                  height={350} 
+                  className="object-contain drop-shadow-2xl"
+                />
+              </motion.div>
+
+              <h1 className="text-slate-900 font-headline text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter mb-8 relative z-10">
                 <TextReveal text="Architectural Precision In Global Logistics." />
               </h1>
               <div className="text-slate-700 text-lg md:text-xl font-body max-w-2xl mb-12 leading-relaxed">
-                Fast, secure, and reliable shipping across <FlipWords words={words} className="text-primary font-bold" /> and worldwide. 
+                Fast, secure, and reliable shipping across <FlipWords words={words} className="text-yellow-500 font-bold" /> and worldwide. 
                 We don&apos;t just move cargo; we engineer connections across 50+ countries.
               </div>
               <FadeIn delay={0.4} className="flex flex-wrap gap-4">
@@ -326,7 +378,11 @@ export default function Home() {
                 { start: { lat: 28.6139, lng: 77.2090, label: "New Delhi" }, end: { lat: 25.2048, lng: 55.2708, label: "Dubai" } },
                 { start: { lat: 28.6139, lng: 77.2090, label: "New Delhi" }, end: { lat: 1.3521, lng: 103.8198, label: "Singapore" } },
                 { start: { lat: 28.6139, lng: 77.2090, label: "New Delhi" }, end: { lat: -33.8688, lng: 151.2093, label: "Sydney" } },
+                { start: { lat: 28.6139, lng: 77.2090, label: "New Delhi" }, end: { lat: 35.6762, lng: 139.6503, label: "Tokyo" } },
+                { start: { lat: 28.6139, lng: 77.2090, label: "New Delhi" }, end: { lat: -23.5505, lng: -46.6333, label: "Sao Paulo" } },
+                { start: { lat: 28.6139, lng: 77.2090, label: "New Delhi" }, end: { lat: 30.0444, lng: 31.2357, label: "Cairo" } },
               ]}
+              lineColor="#f59e0b"
             />
           </div>
         </section>

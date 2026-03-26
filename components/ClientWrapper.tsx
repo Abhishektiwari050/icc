@@ -12,6 +12,7 @@ const navItems = [
 ];
 
 import Lenis from "lenis";
+import { ThemeProvider } from "next-themes";
 
 export const ClientWrapper = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
@@ -30,9 +31,9 @@ export const ClientWrapper = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
       <FloatingNav navItems={navItems} />
       {children}
-    </>
+    </ThemeProvider>
   );
 };
