@@ -199,14 +199,14 @@ export default function Home() {
       <section className="relative overflow-hidden min-h-[95vh] flex items-center">
         <AuroraBackground className="flex-1">
           <div className="max-w-screen-2xl mx-auto px-8 relative z-10 w-full">
-            <div className="max-w-4xl pt-20 relative grid lg:grid-cols-2 gap-12 items-center">
-              <div className="relative z-10">
-                <h1 className="text-slate-900 font-headline text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter mb-8">
+            <div className="max-w-7xl pt-24 relative grid lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-7 relative z-10">
+                <h1 className="text-slate-900 font-headline text-6xl md:text-8xl lg:text-[110px] font-extrabold leading-[0.9] tracking-tighter mb-10">
                   <TextReveal text="Architectural Precision In Global Logistics." />
                 </h1>
-                <div className="text-slate-800 text-lg md:text-xl font-body max-w-2xl mb-12 leading-relaxed font-medium">
+                <div className="text-slate-800 text-xl md:text-2xl font-body max-w-3xl mb-12 leading-relaxed font-medium opacity-90">
                   Fast, secure, and reliable shipping across <FlipWords words={words} className="text-yellow-600 font-bold" /> and worldwide. 
-                  We don&apos;t just move cargo; we engineer connections across 50+ countries.
+                  We engineering connections across 50+ countries with technical mastery.
                 </div>
                 <FadeIn delay={0.4} className="flex flex-wrap gap-4">
                   <Link href="/tracking">
@@ -228,37 +228,37 @@ export default function Home() {
               </div>
 
               {/* 3D-Look Truck with Wobble & 3D-Card */}
-              <div className="hidden lg:block relative z-20">
+              <div className="hidden lg:block lg:col-span-5 relative z-20">
                 <FadeIn delay={0.6}>
-                  <CardContainer className="inter-var">
-                    <CardBody className="bg-white/50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto h-auto rounded-xl p-6 border transition-all duration-300">
+                  <CardContainer className="inter-var w-full translate-x-12">
+                    <CardBody className="bg-white/80 backdrop-blur-sm relative group/card border-slate-200/50 w-full h-auto rounded-3xl p-8 border shadow-2xl transition-all duration-500 hover:scale-[1.02]">
                       <CardItem
                         translateZ="50"
-                        className="text-xl font-bold text-slate-900"
+                        className="text-2xl font-black text-slate-900 uppercase tracking-tight"
                       >
                         Premium Freight Service
                       </CardItem>
                       <CardItem
                         as="p"
                         translateZ="60"
-                        className="text-slate-500 text-sm max-w-sm mt-2 font-medium"
+                        className="text-slate-500 text-sm mt-2 font-bold uppercase tracking-widest opacity-60"
                       >
                         Interactive Logistics Architecture
                       </CardItem>
-                      <CardItem translateZ="100" className="w-full mt-4">
-                        <WobbleCard containerClassName="bg-slate-50 border border-slate-200">
+                      <CardItem translateZ="100" className="w-full mt-8">
+                        <WobbleCard containerClassName="bg-slate-100/50 border border-slate-200 overflow-hidden rounded-2xl">
                           <Image
                             src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=800&h=600"
                             alt="Logistics Truck"
                             width={800}
                             height={600}
-                            className="object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
+                            className="object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-700 scale-110 hover:scale-100"
                           />
                         </WobbleCard>
                       </CardItem>
                     </CardBody>
                   </CardContainer>
-                  <p className="text-center text-slate-400 text-xs mt-2 uppercase tracking-[0.2em] font-bold opacity-50">Interactive 3D Perspective View</p>
+                  <p className="text-right text-slate-400 text-[10px] mt-6 uppercase tracking-[0.4em] font-black opacity-30">Interactive 3D Perspective View</p>
                 </FadeIn>
               </div>
             </div>
