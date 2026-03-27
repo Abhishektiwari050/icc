@@ -7,8 +7,17 @@ import { FadeIn, TextReveal } from "@/components/ui/animations";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { FlipWords } from "@/components/ui/flip-words";
 import { Button as MovingBorderButton } from "@/components/ui/moving-border";
-import { Globe3D, GlobeMarker } from "@/components/ui/3d-globe";
+import dynamic from "next/dynamic";
 import { HERO_WORDS } from "@/constants";
+
+const Globe3D = dynamic(() => import("@/components/ui/3d-globe").then((mod) => mod.Globe3D), {
+  ssr: false,
+  loading: () => <div className="w-full h-full min-h-[500px] flex items-center justify-center bg-slate-100/10 rounded-full animate-pulse">
+    <div className="text-primary/40 text-[10px] font-black uppercase tracking-[0.4em]">Initializing Global Engine...</div>
+  </div>
+});
+
+import { GlobeMarker } from "@/components/ui/3d-globe";
 
 const sampleMarkers: GlobeMarker[] = [
   { lat: 40.7128, lng: -74.006, src: "https://assets.aceternity.com/avatars/1.webp", label: "New York" },
