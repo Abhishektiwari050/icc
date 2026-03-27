@@ -7,7 +7,7 @@ import { FadeIn, TextReveal } from "@/components/ui/animations";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { FlipWords } from "@/components/ui/flip-words";
 import { Button as MovingBorderButton } from "@/components/ui/moving-border";
-import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-collision";
+import { Vortex } from "@/components/ui/vortex";
 import { HERO_WORDS } from "@/constants";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 
@@ -19,9 +19,9 @@ export const HeroSection = () => {
           <div className="max-w-7xl pt-16 md:pt-24 relative grid lg:grid-cols-2 gap-12 items-center">
             <div className="flex flex-col justify-center gap-12 sm:gap-16 pt-12 md:pt-40 lg:pt-0 relative z-10">
               <FadeIn delay={0.1}>
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 border border-primary/10 rounded-full mb-4">
-                  <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md border border-slate-300/30 rounded-full mb-4 shadow-sm">
+                  <span className="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-800">
                     Next-Gen Freight Architecture
                   </span>
                 </div>
@@ -40,7 +40,7 @@ export const HeroSection = () => {
                 <Link href="/tracking">
                   <MovingBorderButton
                     borderRadius="0.5rem"
-                    className="bg-primary text-on-primary border-primary font-headline font-extrabold uppercase tracking-widest text-sm"
+                    className="bg-primary text-on-primary border-primary font-headline font-extrabold uppercase tracking-widest text-sm shadow-xl"
                   >
                     Track Shipment
                   </MovingBorderButton>
@@ -56,12 +56,18 @@ export const HeroSection = () => {
             </div>
 
             <div className="relative z-20 mt-12 lg:mt-0 min-h-[500px] flex items-center justify-center">
-              <FadeIn delay={0.3} className="w-full h-full">
-                <BackgroundBeamsWithCollision className="bg-transparent h-full w-full rounded-3xl border border-slate-200/50 shadow-2xl overflow-hidden min-h-[500px]">
-                  <div className="relative z-50 p-8 w-full max-w-sm">
-                     <div className="relative rounded-2xl p-6 bg-white/80 backdrop-blur-xl border border-slate-200">
+              <FadeIn delay={0.3} className="w-full h-full max-w-2xl mx-auto lg:h-[600px]">
+                <Vortex
+                  backgroundColor="transparent"
+                  rangeY={120}
+                  particleCount={300}
+                  baseHue={45}
+                  containerClassName="rounded-[32px] border border-slate-200/50 bg-white/20 backdrop-blur-sm shadow-2xl overflow-hidden h-full flex items-center justify-center"
+                >
+                  <div className="relative z-50 p-6 md:p-8 w-full max-w-sm transform hover:scale-[1.02] transition-transform duration-500">
+                     <div className="relative rounded-2xl p-6 bg-white/90 backdrop-blur-2xl border border-slate-200 shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
                         <GlowingEffect
-                          spread={40}
+                          spread={60}
                           glow={true}
                           disabled={false}
                           proximity={64}
@@ -69,33 +75,40 @@ export const HeroSection = () => {
                         />
                         <div className="relative z-10">
                           <div className="flex items-center justify-between mb-8">
-                            <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                              <span className="w-3 h-3 bg-primary rounded-full animate-ping" />
+                            <div className="h-10 w-10 rounded-full bg-yellow-500/10 flex items-center justify-center border border-yellow-500/20">
+                              <span className="w-2 h-2 bg-yellow-500 rounded-full animate-ping" />
                             </div>
                             <div className="text-right">
-                              <p className="text-[10px] uppercase font-black tracking-widest text-slate-400">Hub Status</p>
-                              <p className="text-xs font-bold text-green-600 uppercase">Operational</p>
+                              <p className="text-[10px] uppercase font-black tracking-widest text-slate-400">Mastery Hub</p>
+                              <p className="text-xs font-bold text-slate-900 uppercase">Live Operations</p>
                             </div>
                           </div>
                           
-                          <div className="space-y-4">
-                            <div className="p-3 bg-slate-50 rounded-lg border border-slate-100">
-                              <p className="text-[8px] uppercase font-bold text-slate-400 mb-1">Live Freight Volume</p>
-                              <p className="text-xl font-black text-slate-900 tabular-nums">14,290 <span className="text-[10px] font-medium text-slate-500 underline ml-1">KGS/HR</span></p>
+                          <div className="space-y-3">
+                            <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 shadow-inner group transition-colors">
+                              <p className="text-[8px] uppercase font-bold text-slate-500 mb-1 tracking-widest group-hover:text-yellow-500 transition-colors">Real-time throughput</p>
+                              <p className="text-2xl font-black text-white tabular-nums">98.4<span className="text-[10px] font-medium text-slate-500 ml-1 group-hover:text-yellow-500/50 uppercase">% UP</span></p>
                             </div>
-                            <div className="p-3 bg-slate-50 rounded-lg border border-slate-100 font-headline">
-                              <p className="text-[8px] uppercase font-bold text-slate-400 mb-1">Active Connections</p>
-                              <p className="text-xl font-black text-slate-900 tabular-nums">1,200+ <span className="text-[10px] font-medium text-slate-500 ml-1">NODES</span></p>
+                            <div className="p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                              <p className="text-[8px] uppercase font-bold text-slate-400 mb-1 tracking-widest">Global Reach</p>
+                              <p className="text-2xl font-black text-slate-900 tabular-nums">1.2B<span className="text-[10px] font-medium text-slate-500 ml-1 uppercase">Metric Tons</span></p>
                             </div>
                           </div>
                           
-                          <p className="mt-8 pt-6 border-t border-slate-100 text-[10px] text-center text-slate-400 uppercase font-black tracking-[0.2em] opacity-40">
-                            ICC Logistics Global Architecture
-                          </p>
+                          <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-center gap-4 opacity-50">
+                             <div className="flex -space-x-2">
+                               {[1,2,3].map(i => (
+                                 <div key={i} className="w-5 h-5 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
+                                   <div className="w-full h-full bg-slate-400 animate-pulse" />
+                                 </div>
+                               ))}
+                             </div>
+                             <p className="text-[8px] uppercase font-black text-slate-400 tracking-[0.2em]">Validated Experts</p>
+                          </div>
                         </div>
                      </div>
                   </div>
-                </BackgroundBeamsWithCollision>
+                </Vortex>
               </FadeIn>
             </div>
           </div>
