@@ -7,7 +7,7 @@ import { FadeIn, TextReveal } from "@/components/ui/animations";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { FlipWords } from "@/components/ui/flip-words";
 import { Button as MovingBorderButton } from "@/components/ui/moving-border";
-import { LogisticsGrid } from "@/components/ui/LogisticsGrid";
+import { GlobeComponent } from "@/components/ui/GlobeComponent";
 import { HERO_WORDS } from "@/constants";
 
 export const HeroSection = () => {
@@ -15,8 +15,8 @@ export const HeroSection = () => {
     <section className="relative overflow-hidden min-h-[95vh] flex items-center">
       <AuroraBackground className="flex-1">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 relative z-10 w-full">
-          <div className="max-w-7xl pt-16 md:pt-24 relative grid lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 flex flex-col justify-center gap-12 sm:gap-16 pt-12 md:pt-40 lg:pt-0 relative z-10">
+          <div className="max-w-7xl pt-16 md:pt-24 relative grid lg:grid-cols-2 gap-12 items-center">
+            <div className="flex flex-col justify-center gap-12 sm:gap-16 pt-12 md:pt-40 lg:pt-0 relative z-10">
               <FadeIn delay={0.1}>
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 border border-primary/10 rounded-full mb-4">
                   <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
@@ -54,10 +54,10 @@ export const HeroSection = () => {
               </FadeIn>
             </div>
 
-            <div className="lg:col-span-5 relative z-20 mt-12 lg:mt-0 xl:scale-125 lg:translate-y-12 min-h-[500px]">
-              <FadeIn delay={0.3}>
-                <LogisticsGrid />
-                <p className="text-right text-slate-400 text-[10px] mt-2 uppercase tracking-[0.4em] font-black opacity-30">Global Fleet Connectivity Network</p>
+            <div className="relative z-20 mt-12 lg:mt-0 lg:scale-110 lg:translate-x-12 min-h-[500px] flex items-center justify-center">
+              <FadeIn delay={0.3} className="w-full h-full">
+                <GlobeComponent />
+                <p className="text-center lg:text-right text-slate-400 text-[10px] mt-2 uppercase tracking-[0.4em] font-black opacity-30">Global Architectural Network Visualization</p>
               </FadeIn>
             </div>
           </div>
