@@ -35,7 +35,7 @@ export const MultiStepLoader = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-surface backdrop-blur-2xl"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-surface/80 backdrop-blur-lg"
         >
           <div className="relative h-96 w-full max-w-md px-10 flex flex-col justify-center">
             <div className="absolute left-0 top-0 h-full w-1 overflow-hidden rounded-full bg-surface-container-highest">

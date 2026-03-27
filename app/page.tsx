@@ -322,18 +322,18 @@ export default function Home() {
                   title={service.title}
                   description={service.description}
                   header={
-                    <CardContainer className="w-full py-0 h-48 md:h-full">
-                      <CardBody className="w-full h-full relative group/card">
-                        <CardItem translateZ="50" className="w-full h-full">
-                          <Image
-                            src={service.image}
-                            alt={service.title}
-                            fill
-                            className="object-cover rounded-xl group-hover/card:shadow-xl transition-all duration-300"
-                          />
-                        </CardItem>
-                      </CardBody>
-                    </CardContainer>
+                    <motion.div 
+                      whileHover={{ y: -5, scale: 1.02 }}
+                      transition={{ duration: 0.2 }}
+                      className="w-full h-48 md:h-64 relative overflow-hidden rounded-xl shadow-sm hover:shadow-lg transition-shadow"
+                    >
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </motion.div>
                   }
                   icon={service.icon}
                   className={service.className}
