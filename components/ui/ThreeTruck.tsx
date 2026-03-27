@@ -1,129 +1,170 @@
 "use client";
 
-import React, { Suspense, useRef, useState, useEffect } from "react";
+import React, { Suspense, useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { 
   OrbitControls, 
   Stage, 
-  useGLTF, 
   PerspectiveCamera,
   Float,
   ContactShadows,
-  Environment
+  Environment,
+  Text,
+  MeshWobbleMaterial
 } from "@react-three/drei";
 import * as THREE from "three";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
-function TruckModel({ url, onError }: { url: string; onError: () => void }) {
-  try {
-    // @ts-ignore
-    const { scene } = useGLTF(url, undefined, undefined, (e) => {
-        console.error("3D Model Load Error:", e);
-        onError();
-    });
-    const group = useRef<THREE.Group>(null);
+// Procedural Truck Component - 100% Code-Driven
+function ProceduralTruck() {
+  const group = useRef<THREE.Group>(null);
+  
+  // Animate wheels
+  useFrame((state) => {
+    if (!group.current) return;
+    const time = state.clock.getElapsedTime();
+    // Subtle rocking animation
+    group.current.rotation.y = Math.sin(time * 0.5) * 0.05;
+  });
 
-    // Apply Yellow/Black/White colors to the meshes
-    React.useLayoutEffect(() => {
-        if (!scene) return;
-        scene.traverse((obj: any) => {
-        if (obj.isMesh) {
-            obj.castShadow = true;
-            obj.receiveShadow = true;
-            
-            // Retexture logic based on common naming or index
-            if (obj.name.toLowerCase().includes("body") || obj.name.toLowerCase().includes("cabin")) {
-                obj.material.color.set("#ffcc00"); // Corporate Yellow
-            } else if (obj.name.toLowerCase().includes("tire") || obj.name.toLowerCase().includes("wheel")) {
-                obj.material.color.set("#1a1a1a"); // Matte Black
-            } else if (obj.name.toLowerCase().includes("trailer")) {
-                obj.material.color.set("#ffffff"); // Gloss White
-            }
-        }
-        });
-    }, [scene]);
+  return (
+    <group ref={group} dispose={null} scale={1.2}>
+      {/* 1. MAIN CHASSIS (Black) */}
+      <mesh position={[0, 0.2, 0]} castShadow receiveShadow>
+        <boxGeometry args={[0.8, 0.15, 4.8]} />
+        <meshStandardMaterial color="#111111" roughness={0.2} metalness={0.8} />
+      </mesh>
 
-    return <primitive ref={group} object={scene} scale={0.015} position={[0, -0.5, 0]} />;
-  } catch (e) {
-    onError();
-    return null;
-  }
+      {/* 2. THE CABIN (Corporate Yellow) */}
+      <group position={[0, 0.7, 1.8]}>
+        {/* Main Body */}
+        <mesh castShadow receiveShadow>
+          <boxGeometry args={[1.1, 1.0, 1.2]} />
+          <meshStandardMaterial color="#ffcc00" roughness={0.3} metalness={0.5} />
+        </mesh>
+        {/* Windshield */}
+        <mesh position={[0, 0.2, 0.61]} castShadow>
+          <boxGeometry args={[0.9, 0.4, 0.05]} />
+          <meshStandardMaterial color="#000000" emissive="#111111" roughness={0} />
+        </mesh>
+        {/* Roof */}
+        <mesh position={[0, 0.55, 0]}>
+            <boxGeometry args={[1.15, 0.1, 1.25]} />
+            <meshStandardMaterial color="#ffcc00" />
+        </mesh>
+      </group>
+
+      {/* 3. THE CARGO TRAILER (White with Wireframe) */}
+      <group position={[0, 0.95, -0.8]}>
+        {/* Trailer Body */}
+        <mesh castShadow receiveShadow>
+          <boxGeometry args={[1.2, 1.6, 3.8]} />
+          <meshStandardMaterial 
+            color="#ffffff" 
+            roughness={0.1} 
+            metalness={0.1} 
+            transparent 
+            opacity={0.95} 
+          />
+        </mesh>
+        
+        {/* Glowing Wireframe Overlay (Atlas Aesthetic) */}
+        <mesh>
+          <boxGeometry args={[1.21, 1.61, 3.81]} />
+          <meshBasicMaterial color="#ffcc00" wireframe transparent opacity={0.15} />
+        </mesh>
+
+        {/* ICC BRANDING */}
+        <Text
+          position={[0.61, 0, 0]}
+          rotation={[0, Math.PI / 2, 0]}
+          fontSize={0.4}
+          color="#111111"
+          font="/fonts/Inter-Bold.ttf"
+          anchorX="center"
+          anchorY="middle"
+        >
+          ICC
+        </Text>
+        <Text
+          position={[-0.61, 0, 0]}
+          rotation={[0, -Math.PI / 2, 0]}
+          fontSize={0.4}
+          color="#111111"
+          font="/fonts/Inter-Bold.ttf"
+          anchorX="center"
+          anchorY="middle"
+        >
+          ICC
+        </Text>
+      </group>
+
+      {/* 4. WHEELS (Spinning Black) */}
+      {[
+        [-0.45, 0.1, 1.8], [0.45, 0.1, 1.8], // Front
+        [-0.45, 0.1, -1.2], [0.45, 0.1, -1.2], // Rear set 1
+        [-0.45, 0.1, -2.0], [0.45, 0.1, -2.0], // Rear set 2
+      ].map((pos, i) => (
+        <mesh key={i} position={pos as [number, number, number]} rotation={[0, 0, Math.PI / 2]} castShadow>
+          <cylinderGeometry args={[0.3, 0.3, 0.2, 24]} />
+          <meshStandardMaterial color="#1a1a1a" roughness={0.8} />
+        </mesh>
+      ))}
+
+      {/* 5. ACCENT LIGHTS */}
+      <pointLight position={[0.5, 0.5, 2.4]} intensity={0.5} color="#ffcc00" />
+      <pointLight position={[-0.5, 0.5, 2.4]} intensity={0.5} color="#ffcc00" />
+    </group>
+  );
 }
 
 export const ThreeTruck = () => {
-  const [hasError, setHasError] = useState(false);
-
-  // WebGL Context Lost handling
-  const handleCreated = (state: any) => {
-    state.gl.domElement.addEventListener("webglcontextlost", (event: any) => {
-      event.preventDefault();
-      console.warn("WebGL Context Lost. Switching to fallback.");
-      setHasError(true);
-    }, false);
-  };
-
-  if (hasError) {
-    return (
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="w-full h-[500px] flex items-center justify-center relative bg-slate-50/50 rounded-3xl overflow-hidden border border-slate-200/50"
-      >
-        <Image 
-          src="/images/cargo-truck-3d.png"
-          alt="Premium Logistics Visualization"
-          fill
-          className="object-contain p-8 drop-shadow-2xl"
-        />
-        <div className="absolute bottom-4 right-4 z-20 flex flex-col items-end opacity-20">
-          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-900 border-b border-slate-900/10 pb-1">
-            Standard Engine (Fallback)
-          </span>
-        </div>
-      </motion.div>
-    );
-  }
-
   return (
     <div className="w-full h-[500px] relative cursor-grab active:cursor-grabbing">
       <Canvas 
         shadows 
         dpr={[1, 2]} 
-        camera={{ position: [0, 0, 5], fov: 45 }}
-        onCreated={handleCreated}
-        onError={() => setHasError(true)}
+        camera={{ position: [5, 5, 5], fov: 35 }}
       >
         <Suspense fallback={null}>
-          <Stage environment="city" intensity={0.6} shadows="contact">
-            <Float speed={1.5} rotationIntensity={0.5} floatIntensity={0.5}>
-              <TruckModel 
-                url="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/delivery-truck/model.gltf" 
-                onError={() => setHasError(true)}
-              />
+          <Stage environment="city" intensity={0.5} shadows="contact" adjustCamera={false}>
+            <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
+              <ProceduralTruck />
             </Float>
           </Stage>
           
           <OrbitControls 
             makeDefault 
             enableZoom={false}
-            minPolarAngle={0} 
-            maxPolarAngle={Math.PI / 1.75}
+            minPolarAngle={Math.PI / 4} 
+            maxPolarAngle={Math.PI / 2}
             autoRotate
-            autoRotateSpeed={0.5}
+            autoRotateSpeed={0.8}
           />
           
-          <Environment preset="city" />
-          <ContactShadows resolution={1024} scale={10} blur={2} opacity={0.25} far={10} color="#000000" position={[0, -0.6, 0]} />
+          <Environment preset="night" />
+          <ContactShadows 
+            resolution={1024} 
+            scale={12} 
+            blur={2.5} 
+            opacity={0.4} 
+            far={10} 
+            color="#000000" 
+            position={[0, -0.01, 0]} 
+          />
         </Suspense>
       </Canvas>
       
+      {/* Technical Overlay */}
       <div className="absolute top-4 right-4 z-20 flex flex-col items-end opacity-40 pointer-events-none">
-        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-900 border-b border-slate-900/10 pb-1">
-          Real-Time 3D Engine
-        </span>
+        <div className="flex items-center gap-2 mb-1">
+          <div className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-900 border-b border-slate-900/10 pb-1">
+            Procedural 3D Engine v2
+          </span>
+        </div>
         <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-slate-500 mt-1">
-          PhysX Enabled • 60FPS Interactivity
+          Atlas Synthesis • Zero Latency Fetch
         </span>
       </div>
     </div>
