@@ -7,8 +7,7 @@ import { FadeIn, TextReveal } from "@/components/ui/animations";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { FlipWords } from "@/components/ui/flip-words";
 import { Button as MovingBorderButton } from "@/components/ui/moving-border";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import { WobbleCard } from "@/components/ui/wobble-card";
+import { CargoTruck3D } from "@/components/ui/CargoTruck3D";
 import { HERO_WORDS } from "@/constants";
 
 export const HeroSection = () => {
@@ -55,37 +54,10 @@ export const HeroSection = () => {
               </FadeIn>
             </div>
 
-            <div className="lg:col-span-5 relative z-20 mt-12 lg:mt-0">
+            <div className="lg:col-span-5 relative z-20 mt-12 lg:mt-0 xl:scale-110">
               <FadeIn delay={0.3}>
-                <CardContainer className="inter-var w-full lg:translate-x-12">
-                  <CardBody className="bg-white/80 backdrop-blur-sm relative group/card border-slate-200/50 w-full h-auto rounded-3xl p-8 border shadow-2xl transition-all duration-500 hover:scale-[1.02]">
-                    <CardItem
-                      translateZ="50"
-                      className="text-2xl font-black text-slate-900 uppercase tracking-tight"
-                    >
-                      Premium Freight Service
-                    </CardItem>
-                    <CardItem
-                      as="p"
-                      translateZ="60"
-                      className="text-slate-500 text-sm mt-2 font-bold uppercase tracking-widest opacity-60"
-                    >
-                      Interactive Logistics Architecture
-                    </CardItem>
-                    <CardItem translateZ="100" className="w-full mt-8">
-                      <WobbleCard containerClassName="bg-slate-100/50 border border-slate-200 overflow-hidden rounded-2xl">
-                        <Image
-                          src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=800&h=600"
-                          alt="Logistics Truck"
-                          width={800}
-                          height={600}
-                          className="object-cover rounded-xl transition-all duration-700 scale-110 hover:scale-100"
-                        />
-                      </WobbleCard>
-                    </CardItem>
-                  </CardBody>
-                </CardContainer>
-                <p className="text-right text-slate-400 text-[10px] mt-6 uppercase tracking-[0.4em] font-black opacity-30">Interactive 3D Perspective View</p>
+                <CargoTruck3D src="/images/cargo-truck-3d.png" />
+                <p className="text-right text-slate-400 text-[10px] mt-2 uppercase tracking-[0.4em] font-black opacity-30">Interactive 3D Perspective View</p>
               </FadeIn>
             </div>
           </div>
