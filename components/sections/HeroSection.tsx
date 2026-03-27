@@ -7,7 +7,7 @@ import { FadeIn, TextReveal } from "@/components/ui/animations";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { FlipWords } from "@/components/ui/flip-words";
 import { Button as MovingBorderButton } from "@/components/ui/moving-border";
-import { ThreeTruck } from "@/components/ui/ThreeTruck";
+import { LogisticsGrid } from "@/components/ui/LogisticsGrid";
 import { HERO_WORDS } from "@/constants";
 
 export const HeroSection = () => {
@@ -56,8 +56,8 @@ export const HeroSection = () => {
 
             <div className="lg:col-span-5 relative z-20 mt-12 lg:mt-0 xl:scale-125 lg:translate-y-12 min-h-[500px]">
               <FadeIn delay={0.3}>
-                <ThreeTruck />
-                <p className="text-right text-slate-400 text-[10px] mt-2 uppercase tracking-[0.4em] font-black opacity-30">Interactive Blender 3D Viewport</p>
+                <LogisticsGrid />
+                <p className="text-right text-slate-400 text-[10px] mt-2 uppercase tracking-[0.4em] font-black opacity-30">Global Fleet Connectivity Network</p>
               </FadeIn>
             </div>
           </div>
