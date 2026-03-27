@@ -7,35 +7,9 @@ import { FadeIn, TextReveal } from "@/components/ui/animations";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { FlipWords } from "@/components/ui/flip-words";
 import { Button as MovingBorderButton } from "@/components/ui/moving-border";
-import { WorldMap } from "@/components/ui/world-map";
+import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-collision";
 import { HERO_WORDS } from "@/constants";
-
-const shippingRoutes = [
-  {
-    start: { lat: 40.7128, lng: -74.006, label: "New York" }, // New York
-    end: { lat: 51.5074, lng: -0.1278, label: "London" }, // London
-  },
-  {
-    start: { lat: 51.5074, lng: -0.1278, label: "London" }, // London
-    end: { lat: 25.2048, lng: 55.2708, label: "Dubai" }, // Dubai
-  },
-  {
-    start: { lat: 25.2048, lng: 55.2708, label: "Dubai" }, // Dubai
-    end: { lat: 1.3521, lng: 103.8198, label: "Singapore" }, // Singapore
-  },
-  {
-    start: { lat: 1.3521, lng: 103.8198, label: "Singapore" }, // Singapore
-    end: { lat: 35.6762, lng: 139.6503, label: "Tokyo" }, // Tokyo
-  },
-  {
-    start: { lat: 35.6762, lng: 139.6503, label: "Tokyo" }, // Tokyo
-    end: { lat: -33.8688, lng: 151.2093, label: "Sydney" }, // Sydney
-  },
-  {
-    start: { lat: 40.7128, lng: -74.006, label: "New York" }, // New York
-    end: { lat: 28.6139, lng: 77.209, label: "New Delhi" }, // New Delhi
-  },
-];
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 export const HeroSection = () => {
   return (
@@ -83,11 +57,45 @@ export const HeroSection = () => {
 
             <div className="relative z-20 mt-12 lg:mt-0 min-h-[500px] flex items-center justify-center">
               <FadeIn delay={0.3} className="w-full h-full">
-                <WorldMap
-                  dots={shippingRoutes}
-                  lineColor="#fbbf24"
-                />
-                <p className="text-center lg:text-right text-slate-400 text-[10px] mt-2 uppercase tracking-[0.4em] font-black opacity-30">Global Logistics Network - Real-time Shipping Routes</p>
+                <BackgroundBeamsWithCollision className="bg-transparent h-full w-full rounded-3xl border border-slate-200/50 shadow-2xl overflow-hidden min-h-[500px]">
+                  <div className="relative z-50 p-8 w-full max-w-sm">
+                     <div className="relative rounded-2xl p-6 bg-white/80 backdrop-blur-xl border border-slate-200">
+                        <GlowingEffect
+                          spread={40}
+                          glow={true}
+                          disabled={false}
+                          proximity={64}
+                          inactiveZone={0.01}
+                        />
+                        <div className="relative z-10">
+                          <div className="flex items-center justify-between mb-8">
+                            <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                              <span className="w-3 h-3 bg-primary rounded-full animate-ping" />
+                            </div>
+                            <div className="text-right">
+                              <p className="text-[10px] uppercase font-black tracking-widest text-slate-400">Hub Status</p>
+                              <p className="text-xs font-bold text-green-600 uppercase">Operational</p>
+                            </div>
+                          </div>
+                          
+                          <div className="space-y-4">
+                            <div className="p-3 bg-slate-50 rounded-lg border border-slate-100">
+                              <p className="text-[8px] uppercase font-bold text-slate-400 mb-1">Live Freight Volume</p>
+                              <p className="text-xl font-black text-slate-900 tabular-nums">14,290 <span className="text-[10px] font-medium text-slate-500 underline ml-1">KGS/HR</span></p>
+                            </div>
+                            <div className="p-3 bg-slate-50 rounded-lg border border-slate-100 font-headline">
+                              <p className="text-[8px] uppercase font-bold text-slate-400 mb-1">Active Connections</p>
+                              <p className="text-xl font-black text-slate-900 tabular-nums">1,200+ <span className="text-[10px] font-medium text-slate-500 ml-1">NODES</span></p>
+                            </div>
+                          </div>
+                          
+                          <p className="mt-8 pt-6 border-t border-slate-100 text-[10px] text-center text-slate-400 uppercase font-black tracking-[0.2em] opacity-40">
+                            ICC Logistics Global Architecture
+                          </p>
+                        </div>
+                     </div>
+                  </div>
+                </BackgroundBeamsWithCollision>
               </FadeIn>
             </div>
           </div>
