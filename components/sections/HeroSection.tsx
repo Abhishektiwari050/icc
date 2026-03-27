@@ -7,13 +7,13 @@ import { FadeIn, TextReveal } from "@/components/ui/animations";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { FlipWords } from "@/components/ui/flip-words";
 import { Button as MovingBorderButton } from "@/components/ui/moving-border";
-import { Vortex } from "@/components/ui/vortex";
-import { HERO_WORDS } from "@/constants";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import { HERO_WORDS, HERO_IMAGE } from "@/constants";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 export const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden min-h-[95vh] flex items-center">
+    <section className="relative overflow-hidden min-h-[95vh] flex items-center bg-slate-50">
       <AuroraBackground className="flex-1">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 relative z-10 w-full">
           <div className="max-w-7xl pt-16 md:pt-24 relative grid lg:grid-cols-2 gap-12 items-center">
@@ -25,7 +25,7 @@ export const HeroSection = () => {
                     Next-Gen Freight Architecture
                   </span>
                 </div>
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[0.95] tracking-tighter uppercase font-headline lg:pr-12">
+                <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-slate-900 leading-[0.95] tracking-tighter uppercase font-headline lg:pr-12">
                   <TextReveal text="Architectural Precision In Global Logistics." />
                 </h1>
               </FadeIn>
@@ -56,59 +56,56 @@ export const HeroSection = () => {
             </div>
 
             <div className="relative z-20 mt-12 lg:mt-0 min-h-[500px] flex items-center justify-center">
-              <FadeIn delay={0.3} className="w-full h-full max-w-2xl mx-auto lg:h-[600px]">
-                <Vortex
-                  backgroundColor="transparent"
-                  rangeY={120}
-                  particleCount={300}
-                  baseHue={45}
-                  containerClassName="rounded-[32px] border border-slate-200/50 bg-white/20 backdrop-blur-sm shadow-2xl overflow-hidden h-full flex items-center justify-center"
-                >
-                  <div className="relative z-50 p-6 md:p-8 w-full max-w-sm transform hover:scale-[1.02] transition-transform duration-500">
-                     <div className="relative rounded-2xl p-6 bg-white/90 backdrop-blur-2xl border border-slate-200 shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
-                        <GlowingEffect
-                          spread={60}
-                          glow={true}
-                          disabled={false}
-                          proximity={64}
-                          inactiveZone={0.01}
+              <FadeIn delay={0.3} className="w-full h-full">
+                <CardContainer className="inter-var">
+                  <CardBody className="bg-white relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[35rem] h-auto rounded-xl p-6 border transition-all">
+                    <CardItem
+                      translateZ="50"
+                      className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter"
+                    >
+                      ICC Global Freight
+                    </CardItem>
+                    <CardItem
+                      as="p"
+                      translateZ="60"
+                      className="text-slate-500 text-xs max-w-sm mt-2 dark:text-slate-300 font-medium"
+                    >
+                      Premium branded fleet operating across international zones with 99.9% uptime.
+                    </CardItem>
+                    <CardItem translateZ="100" className="w-full mt-8">
+                      <div className="relative h-64 md:h-80 w-full rounded-xl overflow-hidden group">
+                        <Image
+                          src={HERO_IMAGE}
+                          fill
+                          className="object-cover group-hover/card:scale-110 transition-transform duration-500"
+                          alt="ICC Branded Truck"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
-                        <div className="relative z-10">
-                          <div className="flex items-center justify-between mb-8">
-                            <div className="h-10 w-10 rounded-full bg-yellow-500/10 flex items-center justify-center border border-yellow-500/20">
-                              <span className="w-2 h-2 bg-yellow-500 rounded-full animate-ping" />
-                            </div>
-                            <div className="text-right">
-                              <p className="text-[10px] uppercase font-black tracking-widest text-slate-400">Mastery Hub</p>
-                              <p className="text-xs font-bold text-slate-900 uppercase">Live Operations</p>
-                            </div>
-                          </div>
-                          
-                          <div className="space-y-3">
-                            <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 shadow-inner group transition-colors">
-                              <p className="text-[8px] uppercase font-bold text-slate-500 mb-1 tracking-widest group-hover:text-yellow-500 transition-colors">Real-time throughput</p>
-                              <p className="text-2xl font-black text-white tabular-nums">98.4<span className="text-[10px] font-medium text-slate-500 ml-1 group-hover:text-yellow-500/50 uppercase">% UP</span></p>
-                            </div>
-                            <div className="p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
-                              <p className="text-[8px] uppercase font-bold text-slate-400 mb-1 tracking-widest">Global Reach</p>
-                              <p className="text-2xl font-black text-slate-900 tabular-nums">1.2B<span className="text-[10px] font-medium text-slate-500 ml-1 uppercase">Metric Tons</span></p>
-                            </div>
-                          </div>
-                          
-                          <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-center gap-4 opacity-50">
-                             <div className="flex -space-x-2">
-                               {[1,2,3].map(i => (
-                                 <div key={i} className="w-5 h-5 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
-                                   <div className="w-full h-full bg-slate-400 animate-pulse" />
-                                 </div>
-                               ))}
-                             </div>
-                             <p className="text-[8px] uppercase font-black text-slate-400 tracking-[0.2em]">Validated Experts</p>
-                          </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                           <div className="text-white">
+                              <p className="text-[10px] font-black uppercase tracking-widest opacity-70">Asset ID</p>
+                              <p className="text-sm font-bold">ICC-FLEET-AX90</p>
+                           </div>
                         </div>
-                     </div>
-                  </div>
-                </Vortex>
+                      </div>
+                    </CardItem>
+                    <div className="flex justify-between items-center mt-8">
+                      <CardItem
+                        translateZ={20}
+                        className="px-4 py-2 rounded-xl text-xs font-black dark:text-white uppercase tracking-widest text-slate-400"
+                      >
+                        Technical Mastery
+                      </CardItem>
+                      <CardItem
+                        translateZ={20}
+                        as="button"
+                        className="px-4 py-2 rounded-xl bg-slate-900 dark:bg-white dark:text-black text-white text-xs font-black uppercase tracking-widest"
+                      >
+                        Details
+                      </CardItem>
+                    </div>
+                  </CardBody>
+                </CardContainer>
               </FadeIn>
             </div>
           </div>

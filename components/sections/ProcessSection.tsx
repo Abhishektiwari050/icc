@@ -22,6 +22,7 @@ export const ProcessSection = () => {
             width={800} 
             height={500} 
             className="rounded-xl shadow-2xl object-cover border border-slate-100" 
+            sizes="(max-width: 768px) 100vw, 800px"
           />
         </div>
       </div>

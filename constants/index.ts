@@ -11,34 +11,36 @@ export const TRACKING_PLACEHOLDERS = [
   "ICC-123-456",
 ];
 
+export const HERO_IMAGE = "/images/hero-truck.png";
+
 export const SERVICES: Service[] = [
   {
     title: "International Shipping",
     description: "Seamless global transit via air and sea with door-to-door tracking and customs clearance support across 220+ countries.",
     icon: React.createElement(Globe, { className: "w-10 h-10 text-yellow-500" }),
     className: "md:col-span-2",
-    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=800&h=400"
+    image: "/images/service-international.png"
   },
   {
     title: "Express Delivery",
     description: "Time-critical logistics for urgent documents and high-value small parcels.",
     icon: React.createElement(Clock, { className: "w-10 h-10 text-yellow-500" }),
     className: "md:col-span-1",
-    image: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?auto=format&fit=crop&q=80&w=400&h=400"
+    image: "/images/service-express.png"
   },
   {
     title: "Domestic Courier",
     description: "Comprehensive nationwide network reaching every corner of India with precision.",
     icon: React.createElement(Truck, { className: "w-10 h-10 text-yellow-500" }),
     className: "md:col-span-1",
-    image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=400&h=400"
+    image: "/images/service-domestic.png"
   },
   {
     title: "Business Logistics",
     description: "Tailored supply chain solutions and warehousing for enterprise partners requiring scale and reliability.",
     icon: React.createElement(Package, { className: "w-10 h-10 text-yellow-500" }),
     className: "md:col-span-2",
-    image: "https://images.unsplash.com/photo-1586528116311-ad86d7c4731a?auto=format&fit=crop&q=80&w=800&h=400"
+    image: "/images/service-business.png"
   },
 ];
 
@@ -47,19 +49,19 @@ export const TESTIMONIALS: Testimonial[] = [
     quote: "ICC has completely transformed our supply chain. Their precision and reliability have allowed us to expand our operations globally with absolute confidence.",
     name: "Sarah Jenkins",
     designation: "Director of Operations, Nexus Tech",
-    src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1000&auto=format&fit=crop",
+    src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400",
   },
   {
     quote: "The real-time visibility and secure handling provided by ICC are unmatched. They truly understand the architectural precision required in logistics.",
     name: "David Chen",
     designation: "Head of Logistics, Global Build",
-    src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1000&auto=format&fit=crop",
+    src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400",
   },
   {
     quote: "Efficient, reliable, and professional. ICC is our go-to partner for all international shipping needs.",
     name: "Michael Roberts",
     designation: "CEO, Streamline Exports",
-    src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop",
+    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
   },
 ];
 
@@ -67,22 +69,22 @@ export const PROCESS_DATA = [
   {
     title: "01 BOOK",
     description: "Schedule your pickup through our digital portal or contact our local hub for custom requirements.",
-    image: "https://images.unsplash.com/photo-1512428559083-a40516a3ee32?auto=format&fit=crop&q=80&w=800&h=500"
+    image: "/images/process-book.png"
   },
   {
     title: "02 PICKUP",
     description: "Our specialized couriers collect the shipment with secure handling protocols and immediate scanning.",
-    image: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?auto=format&fit=crop&q=80&w=800&h=500"
+    image: "/images/process-pickup.png"
   },
   {
     title: "03 TRANSIT",
     description: "Live tracking and optimized routing across our global air & sea hubs ensuring maximum efficiency.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad86d7c4731a?auto=format&fit=crop&q=80&w=800&h=500"
+    image: "/images/process-transit.png"
   },
   {
     title: "04 DELIVERED",
     description: "Safe arrival with digital proof of delivery, instant notification, and recipient verification.",
-    image: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&q=80&w=800&h=500"
+    image: "/images/process-delivered.png"
   },
 ];
 
