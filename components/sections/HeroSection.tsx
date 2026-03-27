@@ -7,7 +7,7 @@ import { FadeIn, TextReveal } from "@/components/ui/animations";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { FlipWords } from "@/components/ui/flip-words";
 import { Button as MovingBorderButton } from "@/components/ui/moving-border";
-import { CargoTruck3D } from "@/components/ui/CargoTruck3D";
+import { ThreeTruck } from "@/components/ui/ThreeTruck";
 import { HERO_WORDS } from "@/constants";
 
 export const HeroSection = () => {
@@ -54,10 +54,10 @@ export const HeroSection = () => {
               </FadeIn>
             </div>
 
-            <div className="lg:col-span-5 relative z-20 mt-12 lg:mt-0 xl:scale-110">
+            <div className="lg:col-span-5 relative z-20 mt-12 lg:mt-0 xl:scale-125 lg:translate-y-12 min-h-[500px]">
               <FadeIn delay={0.3}>
-                <CargoTruck3D src="/images/cargo-truck-3d.png" />
-                <p className="text-right text-slate-400 text-[10px] mt-2 uppercase tracking-[0.4em] font-black opacity-30">Interactive 3D Perspective View</p>
+                <ThreeTruck />
+                <p className="text-right text-slate-400 text-[10px] mt-2 uppercase tracking-[0.4em] font-black opacity-30">Interactive Blender 3D Viewport</p>
               </FadeIn>
             </div>
           </div>
