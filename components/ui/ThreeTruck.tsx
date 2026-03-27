@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { 
   OrbitControls, 
@@ -12,42 +12,95 @@ import {
   Environment
 } from "@react-three/drei";
 import * as THREE from "three";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
-function TruckModel({ url }: { url: string }) {
-  // @ts-ignore
-  const { scene, nodes, materials } = useGLTF(url);
-  const group = useRef<THREE.Group>(null);
-
-  // Apply Yellow/Black/White colors to the meshes
-  React.useLayoutEffect(() => {
-    scene.traverse((obj: any) => {
-      if (obj.isMesh) {
-        obj.castShadow = true;
-        obj.receiveShadow = true;
-        
-        // Retexture logic based on common naming or index
-        if (obj.name.toLowerCase().includes("body") || obj.name.toLowerCase().includes("cabin")) {
-            obj.material.color.set("#ffcc00"); // Corporate Yellow
-        } else if (obj.name.toLowerCase().includes("tire") || obj.name.toLowerCase().includes("wheel")) {
-            obj.material.color.set("#1a1a1a"); // Matte Black
-        } else if (obj.name.toLowerCase().includes("trailer")) {
-            obj.material.color.set("#ffffff"); // Gloss White
-        }
-      }
+function TruckModel({ url, onError }: { url: string; onError: () => void }) {
+  try {
+    // @ts-ignore
+    const { scene } = useGLTF(url, undefined, undefined, (e) => {
+        console.error("3D Model Load Error:", e);
+        onError();
     });
-  }, [scene]);
+    const group = useRef<THREE.Group>(null);
 
-  return <primitive ref={group} object={scene} scale={0.015} position={[0, -0.5, 0]} />;
+    // Apply Yellow/Black/White colors to the meshes
+    React.useLayoutEffect(() => {
+        if (!scene) return;
+        scene.traverse((obj: any) => {
+        if (obj.isMesh) {
+            obj.castShadow = true;
+            obj.receiveShadow = true;
+            
+            // Retexture logic based on common naming or index
+            if (obj.name.toLowerCase().includes("body") || obj.name.toLowerCase().includes("cabin")) {
+                obj.material.color.set("#ffcc00"); // Corporate Yellow
+            } else if (obj.name.toLowerCase().includes("tire") || obj.name.toLowerCase().includes("wheel")) {
+                obj.material.color.set("#1a1a1a"); // Matte Black
+            } else if (obj.name.toLowerCase().includes("trailer")) {
+                obj.material.color.set("#ffffff"); // Gloss White
+            }
+        }
+        });
+    }, [scene]);
+
+    return <primitive ref={group} object={scene} scale={0.015} position={[0, -0.5, 0]} />;
+  } catch (e) {
+    onError();
+    return null;
+  }
 }
 
 export const ThreeTruck = () => {
+  const [hasError, setHasError] = useState(false);
+
+  // WebGL Context Lost handling
+  const handleCreated = (state: any) => {
+    state.gl.domElement.addEventListener("webglcontextlost", (event: any) => {
+      event.preventDefault();
+      console.warn("WebGL Context Lost. Switching to fallback.");
+      setHasError(true);
+    }, false);
+  };
+
+  if (hasError) {
+    return (
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="w-full h-[500px] flex items-center justify-center relative bg-slate-50/50 rounded-3xl overflow-hidden border border-slate-200/50"
+      >
+        <Image 
+          src="/images/cargo-truck-3d.png"
+          alt="Premium Logistics Visualization"
+          fill
+          className="object-contain p-8 drop-shadow-2xl"
+        />
+        <div className="absolute bottom-4 right-4 z-20 flex flex-col items-end opacity-20">
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-900 border-b border-slate-900/10 pb-1">
+            Standard Engine (Fallback)
+          </span>
+        </div>
+      </motion.div>
+    );
+  }
+
   return (
     <div className="w-full h-[500px] relative cursor-grab active:cursor-grabbing">
-      <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 5], fov: 45 }}>
+      <Canvas 
+        shadows 
+        dpr={[1, 2]} 
+        camera={{ position: [0, 0, 5], fov: 45 }}
+        onCreated={handleCreated}
+        onError={() => setHasError(true)}
+      >
         <Suspense fallback={null}>
           <Stage environment="city" intensity={0.6} shadows="contact">
             <Float speed={1.5} rotationIntensity={0.5} floatIntensity={0.5}>
-              <TruckModel url="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/delivery-truck/model.gltf" />
+              <TruckModel 
+                url="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/delivery-truck/model.gltf" 
+                onError={() => setHasError(true)}
+              />
             </Float>
           </Stage>
           
