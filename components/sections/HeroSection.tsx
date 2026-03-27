@@ -7,8 +7,24 @@ import { FadeIn, TextReveal } from "@/components/ui/animations";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { FlipWords } from "@/components/ui/flip-words";
 import { Button as MovingBorderButton } from "@/components/ui/moving-border";
-import { GlobeComponent } from "@/components/ui/GlobeComponent";
+import { Globe3D, GlobeMarker } from "@/components/ui/3d-globe";
 import { HERO_WORDS } from "@/constants";
+
+const sampleMarkers: GlobeMarker[] = [
+  { lat: 40.7128, lng: -74.006, src: "https://assets.aceternity.com/avatars/1.webp", label: "New York" },
+  { lat: 51.5074, lng: -0.1278, src: "https://assets.aceternity.com/avatars/2.webp", label: "London" },
+  { lat: 35.6762, lng: 139.6503, src: "https://assets.aceternity.com/avatars/3.webp", label: "Tokyo" },
+  { lat: -33.8688, lng: 151.2093, src: "https://assets.aceternity.com/avatars/4.webp", label: "Sydney" },
+  { lat: 48.8566, lng: 2.3522, src: "https://assets.aceternity.com/avatars/5.webp", label: "Paris" },
+  { lat: 28.6139, lng: 77.209, src: "https://assets.aceternity.com/avatars/6.webp", label: "New Delhi" },
+  { lat: 55.7558, lng: 37.6173, src: "https://assets.aceternity.com/avatars/7.webp", label: "Moscow" },
+  { lat: -22.9068, lng: -43.1729, src: "https://assets.aceternity.com/avatars/8.webp", label: "Rio de Janeiro" },
+  { lat: 31.2304, lng: 121.4737, src: "https://assets.aceternity.com/avatars/9.webp", label: "Shanghai" },
+  { lat: 25.2048, lng: 55.2708, src: "https://assets.aceternity.com/avatars/10.webp", label: "Dubai" },
+  { lat: -34.6037, lng: -58.3816, src: "https://assets.aceternity.com/avatars/11.webp", label: "Buenos Aires" },
+  { lat: 1.3521, lng: 103.8198, src: "https://assets.aceternity.com/avatars/12.webp", label: "Singapore" },
+  { lat: 37.5665, lng: 126.978, src: "https://assets.aceternity.com/avatars/13.webp", label: "Seoul" },
+];
 
 export const HeroSection = () => {
   return (
@@ -24,7 +40,7 @@ export const HeroSection = () => {
                     Next-Gen Freight Architecture
                   </span>
                 </div>
-                <h1 className="text-3xl sm:text-6xl lg:text-8xl font-black text-slate-900 leading-[0.9] tracking-tighter uppercase font-headline">
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[0.95] tracking-tighter uppercase font-headline lg:pr-12">
                   <TextReveal text="Architectural Precision In Global Logistics." />
                 </h1>
               </FadeIn>
@@ -54,9 +70,17 @@ export const HeroSection = () => {
               </FadeIn>
             </div>
 
-            <div className="relative z-20 mt-12 lg:mt-0 lg:scale-110 lg:translate-x-12 min-h-[500px] flex items-center justify-center">
+            <div className="relative z-20 mt-12 lg:mt-0 min-h-[500px] flex items-center justify-center">
               <FadeIn delay={0.3} className="w-full h-full">
-                <GlobeComponent />
+                <Globe3D
+                  markers={sampleMarkers}
+                  config={{
+                    atmosphereColor: "#4da6ff",
+                    atmosphereIntensity: 20,
+                    bumpScale: 5,
+                    autoRotateSpeed: 0.3,
+                  }}
+                />
                 <p className="text-center lg:text-right text-slate-400 text-[10px] mt-2 uppercase tracking-[0.4em] font-black opacity-30">Global Architectural Network Visualization</p>
               </FadeIn>
             </div>
