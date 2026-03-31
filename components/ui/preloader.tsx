@@ -37,10 +37,10 @@ export const Preloader = () => {
           <Globe className="w-16 h-16 text-primary animate-pulse" />
           <div className="flex flex-col">
             <span className="text-4xl font-black text-slate-900 tracking-tighter leading-none uppercase">
-              ICC
+              Mahakaal
             </span>
             <span className="text-xs font-bold text-slate-400 tracking-[0.3em] uppercase leading-none mt-2">
-              Logistics
+              Enterprises
             </span>
           </div>
         </motion.div>
