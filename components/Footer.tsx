@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 max-w-screen-2xl mx-auto">
         <div className="col-span-1 md:col-span-1">
           <div className="text-xl font-bold text-primary font-headline mb-6 uppercase tracking-tighter">
-            International Courier & Cargo
+            Mahakaal Enterprises
           </div>
           <p className="text-on-surface-variant font-body text-sm leading-relaxed max-w-[280px]">
             Architectural precision in logistics. Bridging India with the global trade ecosystem through data-driven infrastructure and elite cargo handling.
@@ -39,11 +39,11 @@ export default function Footer() {
           <div className="flex flex-col space-y-4 text-sm font-body text-on-surface-variant">
             <div className="flex items-center gap-3">
               <Mail className="w-4 h-4 text-primary" />
-              <span>operations@icc-logistics.com</span>
+              <span>operations@mahakaalenterprises.com</span>
             </div>
             <div className="flex items-center gap-3">
               <MapPin className="w-4 h-4 text-primary" />
-              <span>International Hub, Delhi NCR</span>
+              <span>CHANDRHASS GALI IX/7359, GANDHI NAGAR, DELHI 110031</span>
             </div>
           </div>
           <div className="flex space-x-6 mt-10">
@@ -57,7 +57,7 @@ export default function Footer() {
       
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12 mt-20 pt-10 border-t border-outline/5 text-center">
         <p className="text-on-surface-variant font-headline text-[10px] uppercase tracking-[0.2em] opacity-50">
-          © 2026 International Courier & Cargo. All Rights Reserved. Engineered by Comet.
+          © 2026 Mahakaal Enterprises. All Rights Reserved. Engineered by Comet.
         </p>
       </div>
     </footer>

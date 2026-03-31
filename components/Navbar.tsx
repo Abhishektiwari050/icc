@@ -94,10 +94,10 @@ export default function Navbar() {
               <Globe className="w-8 h-8 text-primary group-hover:rotate-12 transition-transform duration-300" />
               <div className="flex flex-col">
                 <span className="text-xl font-black text-on-surface tracking-tighter font-headline uppercase leading-none">
-                  ICC
+                  Mahakaal
                 </span>
                 <span className="text-[10px] font-label text-on-surface-variant tracking-widest uppercase leading-none mt-1">
-                  Logistics
+                  Enterprises
                 </span>
               </div>
             </Link>

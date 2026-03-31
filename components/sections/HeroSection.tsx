@@ -63,7 +63,7 @@ export const HeroSection = () => {
                       translateZ="50"
                       className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter"
                     >
-                      ICC Global Freight
+                      Mahakaal Global Freight
                     </CardItem>
                     <CardItem
                       as="p"
@@ -78,13 +78,13 @@ export const HeroSection = () => {
                           src={HERO_IMAGE}
                           fill
                           className="object-cover group-hover/card:scale-110 transition-transform duration-500"
-                          alt="ICC Branded Truck"
+                          alt="Mahakaal Branded Truck"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
                            <div className="text-white">
                               <p className="text-[10px] font-black uppercase tracking-widest opacity-70">Asset ID</p>
-                              <p className="text-sm font-bold">ICC-FLEET-AX90</p>
+                              <p className="text-sm font-bold">MH-FLEET-AX90</p>
                            </div>
                         </div>
                       </div>

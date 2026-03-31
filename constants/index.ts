@@ -5,10 +5,10 @@ import { Service, Testimonial } from '@/types';
 export const HERO_WORDS = ["Global", "India", "USA", "Europe", "Dubai", "Singapore"];
 
 export const TRACKING_PLACEHOLDERS = [
-  "Enter tracking number (e.g. ICC-482-901)",
+  "Enter tracking number (e.g. MH-482-901)",
   "Track your international shipment",
   "Where is your package?",
-  "ICC-123-456",
+  "MH-123-456",
 ];
 
 export const HERO_IMAGE = "/images/hero-truck.png";
@@ -46,19 +46,19 @@ export const SERVICES: Service[] = [
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    quote: "ICC has completely transformed our supply chain. Their precision and reliability have allowed us to expand our operations globally with absolute confidence.",
+    quote: "Mahakaal Enterprises has completely transformed our supply chain. Their precision and reliability have allowed us to expand our operations globally with absolute confidence.",
     name: "Sarah Jenkins",
     designation: "Director of Operations, Nexus Tech",
     src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400",
   },
   {
-    quote: "The real-time visibility and secure handling provided by ICC are unmatched. They truly understand the architectural precision required in logistics.",
+    quote: "The real-time visibility and secure handling provided by Mahakaal Enterprises are unmatched. They truly understand the architectural precision required in logistics.",
     name: "David Chen",
     designation: "Head of Logistics, Global Build",
     src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400",
   },
   {
-    quote: "Efficient, reliable, and professional. ICC is our go-to partner for all international shipping needs.",
+    quote: "Efficient, reliable, and professional. Mahakaal Enterprises is our go-to partner for all international shipping needs.",
     name: "Michael Roberts",
     designation: "CEO, Streamline Exports",
     src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",

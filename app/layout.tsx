@@ -5,8 +5,8 @@ import Footer from '@/components/Footer';
 import { ClientWrapper } from '@/components/ClientWrapper';
 
 export const metadata: Metadata = {
-  title: 'International Courier & Cargo',
-  description: 'Global Architect of Logistics',
+  title: 'Mahakaal Enterprises | Global Logistics Hub',
+  description: 'Your trusted partner for global courier, cargo, and logistics solutions based in Delhi.',
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
