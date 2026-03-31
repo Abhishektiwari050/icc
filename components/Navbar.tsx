@@ -20,11 +20,11 @@ export default function Navbar() {
   }, []);
  
   const navLinks = [
-    { name: 'Services', link: '#services', icon: <Rocket className="w-4 h-4" /> },
-    { name: 'Process', link: '#process', icon: <Clock className="w-4 h-4" /> },
-    { name: 'Network', link: '#network', icon: <Globe className="w-4 h-4" /> },
-    { name: 'Testimonials', link: '#testimonials', icon: <Shield className="w-4 h-4" /> },
-    { name: 'Tracking', link: '#tracking-input', icon: <Search className="w-4 h-4" /> },
+    { name: 'Services', link: '/services', icon: <Rocket className="w-4 h-4" /> },
+    { name: 'Process', link: '/process', icon: <Clock className="w-4 h-4" /> },
+    { name: 'Network', link: '/network', icon: <Globe className="w-4 h-4" /> },
+    { name: 'Testimonials', link: '/testimonials', icon: <Shield className="w-4 h-4" /> },
+    { name: 'Tracking', link: '/tracking', icon: <Search className="w-4 h-4" /> },
   ];
  
   useMotionValueEvent(scrollY, "change", (current: number) => {
@@ -72,7 +72,7 @@ export default function Navbar() {
                   <span className="opacity-30">/</span>
                   <span>Network Across 50+ Countries</span>
                   <span className="opacity-30">/</span>
-                  <Link href="#tracking-input" className="bg-black text-primary px-3 py-1 rounded-full font-bold hover:scale-105 transition-all text-[9px] md:text-xs">Track shipment now</Link>
+                  <Link href="/tracking" className="bg-black text-primary px-3 py-1 rounded-full font-bold hover:scale-105 transition-all text-[9px] md:text-xs">Track shipment now</Link>
                   <span className="opacity-30">/</span>
                 </div>
               ))}
